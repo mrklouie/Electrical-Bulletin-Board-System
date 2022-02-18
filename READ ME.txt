@@ -1,4 +1,16 @@
-Import the two sql file in the phpMyAdmin:
+I. To get the database working you must do the following:
 
-1. dbImage (Database for the Images)
-2. dbTest (Database for the Users)
+--How to?--
+1. Install and Download 'xampp'. After downloading, make sure to start the Apache and MySQL in the xampp Control panel.
+2. Go to your preferred browser and type this in the URL: "localhost/phpmyadmin/"
+3. Create a database and name it dbtest and import the dbtest.sql file that you've downloaded
+4. After that create a database again and name it dbimage and import the dbimage.sql that you've also downloaded earlier.
+5. Done!
+
+
+II. Don't go directly into index.php. Instead, go to login.php to login first (You can sign up for a new account if you don't have one)
+
+--How to?--
+*I'm assuming you're done installing all required softwares (xampp and VS Code).*
+1. On your preferred browser type this in the url: "localhost/Electrical-Bulletin-Board-System/login.php". 
+2. Login or sign up for a new one.
