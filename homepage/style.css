@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  height: 100vh;
+  width: 100vw;
+}
+
+section {
+  height: 100%;
+  width: 100%;
+}
+
+.container-cards {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 420px;
+  height: 400px;
+  margin: 0 4rem;
+  border-radius: 20px;
+}
+
+.card img {
+  border-radius: 20px;
+}

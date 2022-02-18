@@ -1,0 +1,4 @@
+Import the two sql file in the phpMyAdmin:
+
+1. dbImage (Database for the Images)
+2. dbTest (Database for the Users)
