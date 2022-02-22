@@ -1,6 +1,6 @@
 <?php
 require "db.php";
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,9 @@ require "db.php";
     <div class="container-fluid">
       <div class="section left-section">
         <nav>
-          <div class="user"><p>Mark Louie,</p></div>
+          <div class="user">
+            <p><?php echo $_SESSION["sessionUsername"] ?></p>
+          </div>
           <ul>
             <li><a href="../index.php">Manage</a></li>
             <li><a href="#">Contact</a></li>
@@ -36,9 +38,8 @@ require "db.php";
 $sql = "SELECT * FROM images";
 $result = mysqli_query($conn, $sql);
 $rowsCount = mysqli_num_rows($result);
-if ($rowsCount > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+if ($rowsCount >
+    0) {while ($row = mysqli_fetch_assoc($result)) {?>
           <div class="details add">
             <h1 class="title"><?php echo $row["title"]; ?></h1>
             <p><?php echo $row["details"]; ?></p>
@@ -63,11 +64,15 @@ if ($rowsCount > 0) {
       </div>
       <div class="section right-section">
         <div class="controls">
-          <button class= "btn-control" id="prev-slide" style="margin-bottom: .6rem;">&#129129;</button>
+          <button
+            class="btn-control"
+            id="prev-slide"
+            style="margin-bottom: 0.6rem"
+          >
+            &#129129;
+          </button>
           <div class="active"></div>
-          <div class="slides">
-
-          </div>
+          <div class="slides"></div>
           <!-- <p class="slide-number">01</p>
           <p class="slide-number">02</p>
           <p class="slide-number">03</p>
@@ -78,11 +83,11 @@ if ($rowsCount > 0) {
 $sql = "SELECT * FROM images";
 $result = mysqli_query($conn, $sql);
 $rowsCount = mysqli_num_rows($result);
-for ($i = 0; $i < $rowsCount; $i++) {
-    echo "<p>0" . ($i + 1) . "</p>";
-}
-?>
-          <button class= "btn-control" id="next-slide">&#129131;</button>
+if ($rowsCount >
+    1) {for ($i = 0; $i < $rowsCount; $i++) {echo "
+          <p class='slides-number'>0" . ($i + 1) . "</p>
+          ";}}?>
+          <button class="btn-control" id="next-slide">&#129131;</button>
         </div>
         <div class="slider">
           <?php
@@ -91,13 +96,36 @@ $result = mysqli_query($conn, $sql);
 $rowsCount = mysqli_num_rows($result);
 if ($rowsCount >
     0) {while ($row = mysqli_fetch_assoc($result)) {?> <img
-          src="../uploads/<?php echo $row["images"]; ?>" alt="">
+          src="../uploads/<?php echo $row["images"]; ?>" data-open-modal=#my-modal>
           <?php
 }}
 ?>
         </div>
       </div>
+      <div class="modal-container">
+        <?php
+$sql = "SELECT * FROM images";
+$result = mysqli_query($conn, $sql);
+$rowsCount = mysqli_num_rows($result);
+if ($rowsCount >
+    0) {while ($row = mysqli_fetch_assoc($result)) {?>
+
+        <!-- START MODAL -->
+        <div class="my-modal" id="my-modal">
+          <div class="modal-header">
+            <h2 class="title" style="font-weight: bold;"><?php echo $row["title"]; ?></h2>
+            <button class="close-modal" data-close-modal>&times;</button>
+          </div>
+          <div class="modal-body"><?php echo $row["details"]; ?></div>
+        </div>
+        <?php }
+}
+?>
+        <!-- END MODAL -->
+      </div>
     </div>
-      <script src="app1.js"></script>
+
+    <div id="overlay"></div>
+    <script src="app1.js"></script>
   </body>
 </html>

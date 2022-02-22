@@ -1,13 +1,17 @@
 const slider = document.querySelector(".slider");
 const active = document.querySelector(".active");
 const nextSlide = document.getElementById("next-slide");
-const prevSlide = document.getElementById("prev-slide")
+const prevSlide = document.getElementById("prev-slide");
+
+
+
 
 let images = document.querySelectorAll("img");
 let slides = document.querySelectorAll(".controls p");
 let controls = document.querySelector(".slides");
 let details = document.querySelectorAll(".details");
 let detailsSection = document.querySelector(".details-section");
+let slidesNumber = document.querySelectorAll(".slides-number");
 
 
 
@@ -21,8 +25,60 @@ let counterSlides = 1;
 let sizeActive = active.clientHeight + 5;
 let counterDetails = 1;
 const size = images[0].clientHeight + 96;
+
+// DATA ATTRIBUTES
+let openModalBtn = document.querySelectorAll("[data-open-modal]");
+let closeModalBtn = document.querySelectorAll("[data-close-modal]");
+const modalContainer = document.querySelector(".modal-container");
+const overlay = document.getElementById("overlay");
+let modals = document.querySelectorAll(".my-modal");
+var whichModal;
+
+
+
+if(openModalBtn.length == 1 && closeModalBtn.length == 1){
+    
+    overlay.addEventListener("click", ()=>{
+        const modals = document.querySelectorAll(".modal.activee");
+        modals.forEach(modal =>{
+            closeModal(modal);
+        })
+    })
+    
+    openModalBtn.forEach(buttons =>{
+        buttons.addEventListener("click", ()=>{
+            const modal = document.querySelector(buttons.dataset.openModal);
+            openModal(modal);
+        })
+    })
+    
+    closeModalBtn.forEach(buttons =>{
+        buttons.addEventListener("click", ()=>{
+            const modal = buttons.closest(".modal");
+            closeModal(modal);
+        })
+    })
+    
+    
+    function openModal(modal){
+        modal.classList.add("activee");
+        overlay.classList.add("activee");
+    }
+    
+    
+    
+    function closeModal(modal){
+        modal.classList.remove("activee");
+        overlay.classList.remove("activee");
+    }
+    
+
+    
+}
+
 let interval = 2000;
 var firstCloneDetails;
+
 
     if(images.length == 2){
         var firstCloneImages;
@@ -54,14 +110,68 @@ var firstCloneDetails;
             detailsSection.append(firstCloneDetails);
             detailsSection.prepend(lastCloneDetails);
             detailsSection.append(extraCloneDetails);
-    
-     
+
+            //CLONING MODALS
+            let firstCloneModal = modals[0].cloneNode(true);
+            let lastCloneModal = modals[modals.length -1].cloneNode(true);
+            let extraCloneModal = modals[modals.length -1].cloneNode(true);
+
+            //SET ID
+            firstCloneModal.id = "first-clone-modal";
+            lastCloneModal.id = "last-clone-modal";
+
+            //APPENDING AND PREPENDING
+            modalContainer.append(firstCloneModal);
+            modalContainer.prepend(lastCloneModal);
+            modalContainer.append(extraCloneModal);
+
+
+            //RECALLING
+           
+
+          
         }
         //RECALL
+
         details = document.querySelectorAll(".details");
         images = document.querySelectorAll("img");
-       
+        openModalBtn = document.querySelectorAll("[data-open-modal]");
+        modals = document.querySelectorAll(".my-modal");
+        closeModalBtn = document.querySelectorAll("[data-close-modal]");
+
+
+
+        overlay.addEventListener("click", ()=>{
+            modals[whichModal].classList.remove("activee");
+            overlay.classList.remove("activee");
+            autoPlayImage();
+            autoPlayText();
+           
+        })
+        
+        openModalBtn.forEach((buttons, index)=>{
+            buttons.addEventListener("click", ()=>{
+            console.log(index);
+               whichModal = index;
+               modals[whichModal].classList.add("activee");
+               overlay.classList.add("activee");
+               clearInterval(imagesInterval);
+               clearInterval(textInterval);
+            })
+        })
     
+        closeModalBtn.forEach((buttons, index)=>{
+            buttons.addEventListener("click", ()=>{
+               whichModal = index;
+               modals[whichModal].classList.remove("activee");
+               overlay.classList.remove("activee");
+               autoPlayImage();
+               autoPlayText();
+            })
+        })
+    
+
+ 
         slider.style.transform = `translateY(${-size * counterImages}px)`;
     
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
@@ -176,6 +286,19 @@ var firstCloneDetails;
             autoPlayImage();
         })
 
+        slider.addEventListener("mouseenter", ()=>{
+            clearInterval(imagesInterval);
+            clearInterval(textInterval);
+        })
+        if(overlay.classList.contains("activee")){
+            slider.addEventListener("mouseleave", ()=>{
+                autoPlayText();
+                autoPlayImage();
+            })
+        }
+        
+        
+
         //-------NEXT BUTTON-------//
         nextSlide.addEventListener("click", nextSlideFunction);
             
@@ -216,6 +339,9 @@ var firstCloneDetails;
         //RECALLING
         images = document.querySelectorAll("img");
         details = document.querySelectorAll(".details");
+
+        openModalBtn = document.querySelectorAll("[data-open-modal]");
+        console.log("[Buttons mo para sa mga modal][pareho sa size ng mga naclone mong images]: " + openModalBtn.length);
 
 
         slider.style.transform = `translateY(${-size * counterImages}px)`;
@@ -326,13 +452,19 @@ var firstCloneDetails;
             autoPlayText2();
            
         })
-        
+      
         nextSlide.addEventListener("click", nextSlideFunction2);
         prevSlide.addEventListener("click", prevImage);
 
-    }else{
+    }else if(images.length == 1){
         active.style.display = "none";
         details[0].style.opacity = "1";
+        nextSlide.style.display = "none";
+        prevSlide.style.display = "none";
+        
+        
+    }else if(images.length == 0){
+        active.style.display = "none";
         nextSlide.style.display = "none";
         prevSlide.style.display = "none";
     }

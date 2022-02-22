@@ -12,6 +12,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .section {
@@ -192,4 +193,125 @@ a {
 } */
 button:hover {
   background-color: rgb(240, 236, 236);
+}
+
+.slides-number {
+  margin-bottom: 15px;
+}
+
+/* MY MODAL */
+/* 
+.my-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 200ms ease-in-out;
+  border: 1px solid black;
+  padding: 1rem;
+  width: 800px;
+  max-width: 80%;
+  z-index: 1;
+  background-color: white;
+}
+.my-modal.activee {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.my-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.my-modal-body {
+}
+
+.close-modal {
+  background: none;
+  border-style: none;
+  font-size: 1.5rem;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+}
+
+#overlay.activee {
+  opacity: 1;
+  backdrop-filter: blur(5px);
+  pointer-events: all;
+} */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.my-modal {
+  pointer-events: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 200ms ease-in-out;
+  background-color: white;
+  border: 1px solid black;
+  padding: 1rem;
+  width: 800px;
+  max-width: 80%;
+}
+.my-modal.activee {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+}
+
+.close-modal {
+  font-size: 1.5rem;
+  background: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  background: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+}
+#overlay.activee {
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+}
+
+.modal-container {
+  border: 1px solid black;
 }

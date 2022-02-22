@@ -67,9 +67,9 @@ session_start();
             <div class="left-item account-details">
               <h4 class="left-item-title">Account Details:</h4>
               <ul>
-                <li class="subtext">Username: @mrklouie</li>
+                <li class="subtext">Username: <?php echo $_SESSION["sessionUsername"] ?></li>
                 <li class="subtext" style="word-break: break-all">
-                  Email: marklouiedullavin.hs@gmail.com
+                  Email: <?php echo $_SESSION["sessionEmail"]; ?>
                 </li>
               </ul>
             </div>

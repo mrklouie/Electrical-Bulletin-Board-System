@@ -31,9 +31,9 @@ if (isset($_POST["login"])) {
                     header("Location: ../login.php?error");
                     exit;
                 } else {
-
                     $_SESSION["sessionId"] = $row["id"];
                     $_SESSION["sessionUsername"] = $row["username"];
+                    $_SESSION["sessionEmail"] = $row["email"];
                     header("Location: ../index.php?loggedin");
                     exit;
                 }

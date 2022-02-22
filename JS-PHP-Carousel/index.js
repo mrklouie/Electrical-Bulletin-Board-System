@@ -11,6 +11,7 @@ let active = document.querySelector(".active");
 const prevSlide = document.getElementById("prev-slide");
 
 
+
 console.log("Details Length: " + details.length + "\n" + "Images Length: " + images.length); 
 
 

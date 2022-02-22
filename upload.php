@@ -8,8 +8,8 @@ if (isset($_POST["upload"])) {
     $location = $_FILES["file"]["tmp_name"];
     $error = $_FILES["file"]["error"];
 
-    $title = $_POST["title"];
-    $details = $_POST["details"];
+    $title = mysqli_real_escape_string($conn, $_POST["title"]);
+    $details = mysqli_real_escape_string($conn, $_POST["details"]);
 
     //FILE EXTENSION
     $tempExtension = explode(".", $name);
@@ -30,11 +30,11 @@ if (isset($_POST["upload"])) {
                     $fileDestination = "uploads/" . $newName;
                     move_uploaded_file($location, $fileDestination);
 
-                    $sql = "INSERT INTO images (details, images,title) VALUES ('" . $details . "','" . $newName . "','" . $title . "')";
+                    $sql = "INSERT INTO images (details, images, title) VALUES ('" . $details . "','" . $newName . "','" . $title . "')";
 
                     if ($result = mysqli_query($conn2, $sql)) {
 
-                        //SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
+                        // SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
 
                         // $sql = "SELECT * FROM users";
                         // $result = mysqli_query($conn, $sql);
@@ -55,7 +55,7 @@ if (isset($_POST["upload"])) {
 
                         //         } else {
                         //             $_SESSION["error"] = "Image Uploaded but error occured while sending email to users";
-                        //             header("Location: index.php?error");
+                        //             header("Location: index.php?errorsendingemail");
                         //             exit;
                         //         }
                         //     }
@@ -65,7 +65,7 @@ if (isset($_POST["upload"])) {
                         // } else {
                         //     echo "Nothing found omfg!";
                         // }
-                        //SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
+                        // SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
 
                         $_SESSION["success"] = "Uploaded to the database";
                         header("Location: index.php?uploaded");
@@ -84,7 +84,7 @@ if (isset($_POST["upload"])) {
 
         } else {
             $_SESSION["error"] = "You've reached the maximun uploads";
-            header("Location: index.php?error");
+            header("Location: index.php?errormaxupload");
             exit;
         }
 
