@@ -113,7 +113,7 @@ if ($rowsCount >
         <!-- START MODAL -->
         <div class="my-modal" id="my-modal">
           <div class="modal-header">
-            <h2 class="title" style="font-weight: bold;"><?php echo $row["title"]; ?></h2>
+            <h2 class="title"><?php echo $row["title"]; ?></h2>
             <button class="close-modal" data-close-modal>&times;</button>
           </div>
           <div class="modal-body"><?php echo $row["details"]; ?></div>

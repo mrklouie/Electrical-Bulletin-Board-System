@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;700;800&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -47,6 +47,7 @@
 
 .details .title {
   font-size: 4rem;
+  font-weight: 800;
   text-transform: uppercase;
 }
 

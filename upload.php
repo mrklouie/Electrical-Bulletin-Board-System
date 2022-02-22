@@ -8,8 +8,14 @@ if (isset($_POST["upload"])) {
     $location = $_FILES["file"]["tmp_name"];
     $error = $_FILES["file"]["error"];
 
-    $title = mysqli_real_escape_string($conn, $_POST["title"]);
-    $details = mysqli_real_escape_string($conn, $_POST["details"]);
+    $title = mysqli_real_escape_string($conn, nl2br($_POST['title']));
+    $details = mysqli_real_escape_string($conn, nl2br($_POST['details']));
+
+    // $title = mysqli_real_escape_string($conn, $_POST["title"]);
+    // $details = mysqli_real_escape_string($conn, $_POST["details"]);
+
+    // $title = nl2br($title);
+    // $details = nl2br($details);
 
     //FILE EXTENSION
     $tempExtension = explode(".", $name);
