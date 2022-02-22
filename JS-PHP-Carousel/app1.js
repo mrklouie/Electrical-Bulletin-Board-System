@@ -290,13 +290,15 @@ var firstCloneDetails;
             clearInterval(imagesInterval);
             clearInterval(textInterval);
         })
-        if(overlay.classList.contains("activee")){
-            slider.addEventListener("mouseleave", ()=>{
+       
+
+        slider.addEventListener("mouseleave" ,()=>{
+            if(!overlay.classList.contains("activee")){
                 autoPlayText();
                 autoPlayImage();
-            })
-        }
-        
+            }
+        })
+       
         
 
         //-------NEXT BUTTON-------//
