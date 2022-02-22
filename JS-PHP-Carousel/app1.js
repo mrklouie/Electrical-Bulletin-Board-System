@@ -526,191 +526,133 @@ var firstCloneDetails;
 
     }
     else if(images.length > 3){
-        index = 1;
-        counterImages = 2;
-        
-        console.log("Images length: " + images.length + "\nDetails length: " + details.length);
+        counterImages = 2; //COUNTER PARA SA IMAGE
+        index = 2;          //COUNTER PARA SA TEXTS
 
-
-        
-        //CLONING - IMAGES
+      
+        //CLONING IMAGES
         let firstCloneImages = images[0].cloneNode(true);
         let lastCloneImages = images[images.length -1].cloneNode(true);
         let extraCloneImages = images[1].cloneNode(true);
+        let extraCloneImages1 = images[images.length -2].cloneNode(true);
         
-
-        
-        //CLONING - DETAILS
+        //CLONING DETAILS
         let firstCloneDetails = details[0].cloneNode(true);
         let lastCloneDetails = details[details.length -1].cloneNode(true);
         let extraCloneDetails = details[1].cloneNode(true);
-        
-        
-        //IMAGES - ID
-        firstCloneImages.id = "first-clone";
-        lastCloneImages.id = "last-clone";
+        let extraCloneDetails1 = details[details.length -2].cloneNode(true);
 
 
-        //DETAILS - ID
+        //GIVING ID'S
+        firstCloneImages.id = "first-clone-image";
+        lastCloneImages.id = "last-clone-image";
         firstCloneDetails.id = "first-clone-details";
         lastCloneDetails.id = "last-clone-details";
 
-        //IMAGES APPEND
+        //APPEND AND PREPEND
         slider.append(firstCloneImages);
         slider.prepend(lastCloneImages);
         slider.append(extraCloneImages);
-        
+        slider.prepend(extraCloneImages1);
 
-        //DETAILS APPEND
         detailsSection.append(firstCloneDetails);
         detailsSection.prepend(lastCloneDetails);
         detailsSection.append(extraCloneDetails);
-       
+        detailsSection.prepend(extraCloneDetails1);
+
+        function recalling(){
+            details = document.querySelectorAll(".details");
+            images = document.querySelectorAll("img");
+        }
+
+        recalling();
+        images.forEach((image, index)=>{
+            image.addEventListener("click", ()=>{
+                console.log("Image Clicked: " + index);
+            })
+        })
+
+        console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
 
         slider.style.transform = `translateY(${-size * counterImages}px)`;
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+        details[index].style.opacity = "1";
 
-        details = document.querySelectorAll(".details");
-        images = document.querySelectorAll("img");
-
-
-
-        let extraCloneDetails1 = details[3].cloneNode(true);
-        let extraCloneImages1 = images[3].cloneNode(true);
-
-        slider.prepend(extraCloneImages1);
-        detailsSection.prepend(extraCloneDetails1);
-
-         //RECALLING MODALS
-       
-         openModalBtn = document.querySelectorAll("[data-open-modal]");
-         modals = document.querySelectorAll(".my-modal");
-         closeModalBtn = document.querySelectorAll("[data-close-modal]");
-
-        images.forEach((image, index) =>{
-            image.addEventListener("click", ()=>{
-                console.log("You clicked image: " + index);
-            })
-        })
-        details.forEach((detail, index) =>{
-            detail.addEventListener("click", ()=>{
-                console.log("You clicked detail: " + index);
-            })
-        })
-
-        const nextSlideFunction3=()=>{
-            trylang();
-            trylang2();
-        }
-
-        const autoPlayImage3=()=>{
-            imagesInterval = setInterval(trylang, interval)
-        }
-
-        const trylang=()=>{
+        function next(){
+            details[index].style.opacity = "0";
             if(images[counterImages].id === firstCloneImages.id){
-                console.log("Hopya!: " + counterSlides);
+                console.log("Dead end");
+                counterImages = 2;
+                index = 2;
+        
                 slider.style.transition = `none`;
-                counterImages = 1;
                 slider.style.transform = `translateY(${-size * counterImages}px)`;
-        }else{   
-            if(counterSlides === slides.length){
-                //ACTIVE SLIDES
-                counterSlides = 0;
-  
-            }
-          
-            counterImages++;
-            counterSlides++;
-            slider.style.transform = `translateY(${-size * counterImages}px)`;
-            slider.style.transition = `0.7s`;
-
-            //ACTIVE SLIDES
-            active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
-            active.style.transition = `0.7s`;
-        }
-        }
-        console.log("Images length: " + images.length);
-        const prevImage=()=>{
-            if(images[counterImages] == images[1]){
-                console.log("hopua");
-                slider.style.transition = `none`;
-                counterImages = images.length-2;
-                slider.style.transform = `translateY(${-size * counterImages}px)`;
-        }else{   
-            if(slides[counterSlides] === slides[1]){
-                //ACTIVE SLIDES
-                counterSlides = slides.length;
+                details[index].style.opacity = "1";
+            }else{
+                if(counterSlides === slides.length){
+                    //ACTIVE SLIDES
+                    counterSlides = 0;
+      
+                }
+                counterImages++;
+                index++;
+              
                 counterSlides++;
+                console.log("Image Slide: " + counterImages);
+                slider.style.transform = `translateY(${-size * counterImages}px)`;
+                details[index].style.opacity = "1";
+                slider.style.transition = `0.7s`;
 
+                //ACTIVE SLIDES
                 active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
                 active.style.transition = `0.7s`;
             }
-            counterImages--;
-            counterSlides--;
-            slider.style.transform = `translateY(${-size * counterImages}px)`;
-            slider.style.transition = `0.7s`;
+        }
 
-            //ACTIVE SLIDES
-            active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
-            active.style.transition = `0.7s`;
-
+        function prev(){
             details[index].style.opacity = "0";
-            if(details[index] == details[1]){
-                console.log("hoypa");
-                index = details.length-2;
-                details[index].style.opacity = "1";
+            if(images[counterImages].id === lastCloneImages.id){
+              console.log("Dead end");
+              counterImages = images.length -3;
+              index = details.length -3;
+              details[index].style.opacity = "1";
+              slider.style.transition = `none`;
+              slider.style.transform = `translateY(${-size * counterImages}px)`;
+
             }else{
+                if(slides[counterSlides] === slides[1]){
+                    //ACTIVE SLIDES
+                    counterSlides = slides.length;
+                    counterSlides++;
+    
+                    active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+                    active.style.transition = `0.7s`;
+                }
+                counterImages--;
+                counterSlides--;
                 index--;
                 details[index].style.opacity = "1";
-            }
-        }
-        }
-        console.log("Images length: " + images.length + "\nDetails length: " + details.length);
-        details[index].style.opacity = "1";
-        
+                slider.style.transform = `translateY(${-size * counterImages}px)`;
+                slider.style.transition = `0.7s`;
 
-        const autoPlayText3=()=>{
-            textInterval = setInterval(trylang2, interval);
-        }
-        const trylang2=()=>{
-            details[index].style.opacity = `0`;
-            if(details[index].id === firstCloneDetails.id){
-                index = 2;
-                details[index].style.opacity = "1";
-            }else{
-                index++;
-                details[index].style.opacity = "1";
+                 active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+                active.style.transition = `0.7s`;
+
             }
         }
 
-        // autoPlayImage3();
-        // autoPlayText3();
 
-        // nextSlide.addEventListener("mouseenter", ()=>{
-        //     clearInterval(imagesInterval);
-        //     clearInterval(textInterval);
-        // })
-        // nextSlide.addEventListener("mouseleave", ()=>{
-        //     autoPlayImage3();
-        //     autoPlayText3();
-           
-        // })
-        // prevSlide.addEventListener("mouseenter", ()=>{
-        //     clearInterval(imagesInterval);
-        //     clearInterval(textInterval);
-        // })
-        // prevSlide.addEventListener("mouseleave", ()=>{
-        //     autoPlayImage3();
-        //     autoPlayText3();
-           
-        // })
-      
-        nextSlide.addEventListener("click", nextSlideFunction3);
-        prevSlide.addEventListener("click", prevImage);
+        nextSlide.addEventListener("click", ()=>{
+            next();
+        })
+
+        prevSlide.addEventListener("click", ()=>{
+           prev();
+        })
+    
 
 
-        console.log(counterSlides);
+
     }else if(images.length == 1){
         active.style.display = "none";
         details[0].style.opacity = "1";
