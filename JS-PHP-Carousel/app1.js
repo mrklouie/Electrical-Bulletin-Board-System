@@ -16,6 +16,7 @@ let slidesNumber = document.querySelectorAll(".slides-number");
 
 
 //Variables
+var autoPlayInterval;
 var textInterval;
 var imagesInterval;
 let yungnagawa = 0;
@@ -138,8 +139,6 @@ function recalling(){
         modalContainer.append(extraCloneModal);
         modalContainer.prepend(extraCloneModal1);
 
-
-
         recalling();
         console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
         console.log("Modals length: " + modals.length + "\nOpen Buttons length: " + openModalBtn.length + "\nClose Buttons length: " + closeModalBtn.length);
@@ -168,7 +167,6 @@ function recalling(){
         
             })
         })
-
 
         slider.style.transform = `translateY(${-size * counterImages}px)`;
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
@@ -245,6 +243,8 @@ function recalling(){
         prevSlide.addEventListener("click", ()=>{
             prev();
         })
+
+       
 
     }else if(images.length  === 3){
         //CLONING IMAGES
@@ -528,6 +528,7 @@ function recalling(){
                 whichModal = index;
                 modals[whichModal].classList.add("activee");
                 overlay.classList.add("activee");
+ 
            
             })
         })
@@ -537,6 +538,7 @@ function recalling(){
                 whichModal = index;
                 modals[whichModal].classList.remove("activee");
                 overlay.classList.remove("activee");
+       
         
             })
         })
@@ -610,6 +612,15 @@ function recalling(){
 
             }
         }
+
+        function autoPlay(){
+            autoPlayInterval =  setInterval(()=>{
+                next();
+            }, interval)
+        
+        }
+
+
         nextSlide.addEventListener("click", ()=>{
             next();
         })
@@ -617,6 +628,34 @@ function recalling(){
         prevSlide.addEventListener("click", ()=>{
            prev();
         })
+
+      
+        nextSlide.addEventListener("mouseenter", ()=>{
+            clearInterval(autoPlayInterval);
+        })
+
+        nextSlide.addEventListener("mouseleave", ()=>{
+            autoPlay();
+        })
+
+        slider.addEventListener("mouseenter", ()=>{
+            clearInterval(autoPlayInterval);
+        })
+        
+        overlay.addEventListener("click", ()=>{
+            autoPlay();
+        })
+        slider.addEventListener("mouseleave", ()=>{
+           
+
+        if(!modals[counterImages].classList.contains("activee")){
+            autoPlay();
+        }
+    })
+
+        
+        autoPlay();
+
     }else if(images.length == 1){
         active.style.display = "none";
         details[0].style.opacity = "1";
