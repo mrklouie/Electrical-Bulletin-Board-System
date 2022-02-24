@@ -36,7 +36,7 @@ var whichModal;
 
 
 
-if(openModalBtn.length == 1 && closeModalBtn.length == 1){
+if(openModalBtn.length == 1 && closeModalBtn.length == 1){  
     
     overlay.addEventListener("click", ()=>{
         const modals = document.querySelectorAll(".modal.activee");
@@ -78,232 +78,174 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
 
 let interval = 2000;
 var firstCloneDetails;
+var LastCloneImages;
+var extraCloneImages1;
+
+function recalling(){
+    details = document.querySelectorAll(".details");
+    images = document.querySelectorAll("img");
+    openModalBtn = document.querySelectorAll("[data-open-modal]");
+    modals = document.querySelectorAll(".my-modal");
+    closeModalBtn = document.querySelectorAll("[data-close-modal]");
+}
+
+
 
 
     if(images.length == 2){
-        var firstCloneImages;
-        counterImages = 1;
-        
-        if(images.length == 2 && details.length == 2){
+        counterImages = 2;
+        index = 2;
+        //CLONING MODALS
+        let firstCloneModal = modals[0].cloneNode(true);
+        let lastCloneModal = modals[modals.length -1].cloneNode(true);
+        let extraCloneModal = modals[1].cloneNode(true);
+        let extraCloneModal1 = modals[0].cloneNode(true);
+
+
+        //CLONING IMAGES
+        let firstCloneImages = images[0].cloneNode(true);
+        let lastCloneImages = images[images.length -1].cloneNode(true);
+        let extraCloneImages  = images[1].cloneNode(true);
+        let extraCloneImages1 = images[0].cloneNode(true);
     
-        
-            //CLONE IMAGES
-            firstCloneImages = images[0].cloneNode(true);
-            let extraCloneImages = images[images.length -1].cloneNode(true);
-            let LastCloneImages = images[images.length -1].cloneNode(true);
-            LastCloneImages.id = "last-clone";
-            firstCloneImages.id = "first-clone";
-    
-    
-            slider.append(firstCloneImages);
-            slider.prepend(LastCloneImages);
-            slider.append(extraCloneImages);
-    
-    
-            //CLONE DETAILS
-            firstCloneDetails = details[0].cloneNode(true);
-            let extraCloneDetails = details[details.length -1].cloneNode(true);
-            let lastCloneDetails = details[details.length -1].cloneNode(true);
-    
-            lastCloneDetails.id = "last-clone-details";
-            firstCloneDetails.id = "first-clone-details";
-            detailsSection.append(firstCloneDetails);
-            detailsSection.prepend(lastCloneDetails);
-            detailsSection.append(extraCloneDetails);
-
-            //CLONING MODALS
-            let firstCloneModal = modals[0].cloneNode(true);
-            let lastCloneModal = modals[modals.length -1].cloneNode(true);
-            let extraCloneModal = modals[modals.length -1].cloneNode(true);
-
-            //SET ID
-            firstCloneModal.id = "first-clone-modal";
-            lastCloneModal.id = "last-clone-modal";
-
-            //APPENDING AND PREPENDING
-            modalContainer.append(firstCloneModal);
-            modalContainer.prepend(lastCloneModal);
-            modalContainer.append(extraCloneModal);
 
 
-            //RECALLING
-           
-
-          
-        }
-        //RECALL
-
-        details = document.querySelectorAll(".details");
-        images = document.querySelectorAll("img");
-        openModalBtn = document.querySelectorAll("[data-open-modal]");
-        modals = document.querySelectorAll(".my-modal");
-        closeModalBtn = document.querySelectorAll("[data-close-modal]");
+        //CLONING DETAILS
+        let firstCloneDetails = details[0].cloneNode(true);
+        let lastCloneDetails = details[details.length -1].cloneNode(true);
+        let extraCloneDetails = details[1].cloneNode(true);
+        let extraCloneDetails1 = details[0].cloneNode(true);
 
 
+
+        //GIVING CLONE'S ID
+        firstCloneImages.id = "first-clone-imaegs";
+        lastCloneImages.id = "last-clone-images";
+        firstCloneDetails.id = "first-clone-details";
+        lastCloneDetails.id = "last-clone-details";
+
+        //APPEND AND PREPEND
+        slider.append(firstCloneImages);
+        slider.prepend(lastCloneImages);
+        slider.append(extraCloneImages);
+        slider.prepend(extraCloneImages1);
+        detailsSection.append(firstCloneDetails);
+        detailsSection.prepend(lastCloneDetails);
+        detailsSection.append(extraCloneDetails);
+        detailsSection.prepend(extraCloneDetails1);
+        modalContainer.append(firstCloneModal);
+        modalContainer.prepend(lastCloneModal);
+        modalContainer.append(extraCloneModal);
+        modalContainer.prepend(extraCloneModal1);
+
+
+
+        recalling();
+        console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
+        console.log("Modals length: " + modals.length + "\nOpen Buttons length: " + openModalBtn.length + "\nClose Buttons length: " + closeModalBtn.length);
 
         overlay.addEventListener("click", ()=>{
             modals[whichModal].classList.remove("activee");
             overlay.classList.remove("activee");
-            autoPlayImage();
-            autoPlayText();
+           
            
         })
-        
+
         openModalBtn.forEach((buttons, index)=>{
             buttons.addEventListener("click", ()=>{
-            console.log(index);
-               whichModal = index;
-               modals[whichModal].classList.add("activee");
-               overlay.classList.add("activee");
-               clearInterval(imagesInterval);
-               clearInterval(textInterval);
+                whichModal = index;
+                modals[whichModal].classList.add("activee");
+                overlay.classList.add("activee");
+           
             })
         })
-    
+
         closeModalBtn.forEach((buttons, index)=>{
             buttons.addEventListener("click", ()=>{
-               whichModal = index;
-               modals[whichModal].classList.remove("activee");
-               overlay.classList.remove("activee");
-               autoPlayImage();
-               autoPlayText();
+                whichModal = index;
+                modals[whichModal].classList.remove("activee");
+                overlay.classList.remove("activee");
+        
             })
         })
-    
 
- 
+
         slider.style.transform = `translateY(${-size * counterImages}px)`;
-    
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+        details[index].style.opacity = "1";
 
-        const nextSlideFunction=()=>{
-            if(images[counterImages].id === "first-clone"){
-                slider.style.transition = `none`;
-                counterImages = 1;
-               
+        images.forEach((image, index)=>{
+            image.addEventListener("click", ()=>{
+                console.log("Image Clicked: " + index);
+            })
+        })
+
+        const next=()=>{
+            details[index].style.opacity = "0";
+            if(images[counterImages].id === firstCloneImages.id){
+                slider.style.transition = "none";
+                counterImages = 2;
+                index = 2;
                 slider.style.transform = `translateY(${-size * counterImages}px)`;
-        }else{
-               
-               
-              
-            if(counterSlides === 2){
-                //ACTIVE SLIDES
-                counterSlides = 0;
-  
-            }
-         
-            counterImages++;
-            counterSlides++;
-           
-            slider.style.transform = `translateY(${-size * counterImages}px)`;
-            slider.style.transition = `0.7s`;
-    
-
-            //ACTIVE SLIDES
-            active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
-            active.style.transition = `0.7s`;
-        }
-
-
-            details[index].style.opacity = `0`;
-                if(details[index].id === firstCloneDetails.id){
-                    index = 1;
-                    details[index].style.opacity = "1";
-                }else{
-                    index++;
-                    details[index].style.opacity = "1";
-                }
-        }
-
-        const autoPlayImage=()=>{
-          
-            
-            imagesInterval = setInterval(()=>{ 
-                if(images[counterImages].id === "first-clone"){
-                        slider.style.transition = `none`;
-                        counterImages = 1;
-                       
-                        slider.style.transform = `translateY(${-size * counterImages}px)`;
-                }else{
-                       
-                       
-                      
-                    if(counterSlides === 2){
-                        //ACTIVE SLIDES
-                        counterSlides = 0;
-          
-                    }
-                 
-                    counterImages++;
-                    counterSlides++;
-                   
-                    slider.style.transform = `translateY(${-size * counterImages}px)`;
-                    slider.style.transition = `0.7s`;
-            
-    
+                details[index].style.opacity = "1";
+            }else{
+                if(counterSlides === slides.length){
                     //ACTIVE SLIDES
+                    counterSlides = 0;
+                }
+                counterImages++;
+                index++;
+                counterSlides++;
+                slider.style.transform = `translateY(${-size * counterImages}px)`;
+                details[index].style.opacity = "1";
+                slider.style.transition = "0.7s";
+
+                
+                //ACTIVE SLIDES
+                active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+                active.style.transition = `0.7s`;
+            }
+        }
+
+        const prev=()=>{
+            details[index].style.opacity = "0";
+            if(images[counterImages].id === lastCloneImages.id){
+              console.log("Dead end");
+              counterImages = images.length -3;
+              index = details.length -3;
+              details[index].style.opacity = "1";
+              slider.style.transition = `none`;
+              slider.style.transform = `translateY(${-size * counterImages}px)`;
+
+            }else{
+                if(slides[counterSlides] === slides[1]){
+                    //ACTIVE SLIDES
+                    counterSlides = slides.length;
+                    counterSlides++;
+    
                     active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
                     active.style.transition = `0.7s`;
                 }
-                
-            }, interval)
-        }
-       
-        //-------DETAILS-------//
+                counterImages--;
+                counterSlides--;
+                index--;
+                details[index].style.opacity = "1";
+                slider.style.transform = `translateY(${-size * counterImages}px)`;
+                slider.style.transition = `0.7s`;
 
-        let index = 1;
-        details[index].style.opacity = "1";
+                 active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
+                active.style.transition = `0.7s`;
 
-        const autoPlayText=()=>{
-            textInterval = setInterval(()=>{
-                details[index].style.opacity = `0`;
-                if(details[index].id === firstCloneDetails.id){
-                    index = 1;
-                    details[index].style.opacity = "1";
-                }else{
-                    index++;
-                    details[index].style.opacity = "1";
-                }
-            }, interval)
-        }
-
-        //-------CALLING FUNCTIONS-------//
-
-        autoPlayText();
-        autoPlayImage();
-
-        //-------LISTENERS-------//
-
-        nextSlide.addEventListener("mouseenter", ()=>{
-            clearInterval(imagesInterval);
-            clearInterval(textInterval);
-            
-        })
-            
-        
-        nextSlide.addEventListener("mouseleave", ()=>{
-            autoPlayText();
-            autoPlayImage();
-        })
-
-        slider.addEventListener("mouseenter", ()=>{
-            clearInterval(imagesInterval);
-            clearInterval(textInterval);
-        })
-       
-
-        slider.addEventListener("mouseleave" ,()=>{
-            if(!overlay.classList.contains("activee")){
-                autoPlayText();
-                autoPlayImage();
             }
-        })
-       
-        
+        }
 
-        //-------NEXT BUTTON-------//
-        nextSlide.addEventListener("click", nextSlideFunction);
-            
+        nextSlide.addEventListener("click", ()=>{
+            next();
+        })
+        prevSlide.addEventListener("click", ()=>{
+            prev();
+        })
+
     }else if(images.length  === 3){
         //CLONING IMAGES
         let firstClone = images[0].cloneNode(true);
@@ -401,10 +343,6 @@ var firstCloneDetails;
                autoPlayText2();
             })
         })
-
-
-
-
 
         images = document.querySelectorAll("img");
         details = document.querySelectorAll(".details");
@@ -529,6 +467,11 @@ var firstCloneDetails;
         counterImages = 2; //COUNTER PARA SA IMAGE
         index = 2;          //COUNTER PARA SA TEXTS
 
+        //CLONING MODALS
+        let firstCloneModal = modals[0].cloneNode(true);
+        let lastCloneModal = modals[modals.length -1].cloneNode(true);
+        let extraCloneModal = modals[1].cloneNode(true);
+        let extraCloneModal1 = modals[modals.length -2].cloneNode(true);
       
         //CLONING IMAGES
         let firstCloneImages = images[0].cloneNode(true);
@@ -555,15 +498,16 @@ var firstCloneDetails;
         slider.append(extraCloneImages);
         slider.prepend(extraCloneImages1);
 
+        modalContainer.append(firstCloneModal);
+        modalContainer.prepend(lastCloneModal);
+        modalContainer.append(extraCloneModal);
+        modalContainer.prepend(extraCloneModal1);
+        
+
         detailsSection.append(firstCloneDetails);
         detailsSection.prepend(lastCloneDetails);
         detailsSection.append(extraCloneDetails);
         detailsSection.prepend(extraCloneDetails1);
-
-        function recalling(){
-            details = document.querySelectorAll(".details");
-            images = document.querySelectorAll("img");
-        }
 
         recalling();
         images.forEach((image, index)=>{
@@ -572,8 +516,34 @@ var firstCloneDetails;
             })
         })
 
-        console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
+        overlay.addEventListener("click", ()=>{
+            modals[whichModal].classList.remove("activee");
+            overlay.classList.remove("activee");
+           
+           
+        })
 
+        openModalBtn.forEach((buttons, index)=>{
+            buttons.addEventListener("click", ()=>{
+                whichModal = index;
+                modals[whichModal].classList.add("activee");
+                overlay.classList.add("activee");
+           
+            })
+        })
+
+        closeModalBtn.forEach((buttons, index)=>{
+            buttons.addEventListener("click", ()=>{
+                whichModal = index;
+                modals[whichModal].classList.remove("activee");
+                overlay.classList.remove("activee");
+        
+            })
+        })
+
+        console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
+        console.log("Modals length: " + modals.length + "\nOpen Buttons length: " + openModalBtn.length + "\nClose Buttons length: " + closeModalBtn.length);
+        
         slider.style.transform = `translateY(${-size * counterImages}px)`;
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
         details[index].style.opacity = "1";
@@ -640,8 +610,6 @@ var firstCloneDetails;
 
             }
         }
-
-
         nextSlide.addEventListener("click", ()=>{
             next();
         })
@@ -649,10 +617,6 @@ var firstCloneDetails;
         prevSlide.addEventListener("click", ()=>{
            prev();
         })
-    
-
-
-
     }else if(images.length == 1){
         active.style.display = "none";
         details[0].style.opacity = "1";
