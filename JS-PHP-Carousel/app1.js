@@ -40,7 +40,7 @@ var whichModal;
 if(openModalBtn.length == 1 && closeModalBtn.length == 1){  
     
     overlay.addEventListener("click", ()=>{
-        const modals = document.querySelectorAll(".modal.activee");
+        const modals = document.querySelectorAll(".my-modal.activee");
         modals.forEach(modal =>{
             closeModal(modal);
         })
@@ -55,7 +55,7 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
     
     closeModalBtn.forEach(buttons =>{
         buttons.addEventListener("click", ()=>{
-            const modal = buttons.closest(".modal");
+            const modal = buttons.closest(".my-modal");
             closeModal(modal);
         })
     })
