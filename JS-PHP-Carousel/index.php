@@ -23,10 +23,24 @@ session_start();
   </head>
   <body>
     <div class="container-fluid">
+      <!-- START MODAL -->
+      <div class="pop-modal" id="pop-modal">
+        <div class="section-modal left-modal">
+          <h2></h2>
+        </div>
+        <div class="section-modal right-modal">
+          <h2 class="pop-modal-title">SUBSCRIBE</h2>
+          <p class="pop-modal-subtext">AND DON'T MISS OUT</p>
+          <input type="email" name="email" class="email" placeholder="Enter email here">
+        </div>
+      </div>
+      <!-- END MODAL -->
       <div class="section left-section">
         <nav>
           <div class="user">
-            <p><?php echo $_SESSION["sessionUsername"] ?></p>
+            <p><?php
+
+echo $_SESSION["sessionUsername"] ?></p>
           </div>
           <ul>
             <li><a href="../index.php">Manage</a></li>
@@ -73,12 +87,6 @@ if ($rowsCount >
           </button>
           <div class="active"></div>
           <div class="slides"></div>
-          <!-- <p class="slide-number">01</p>
-          <p class="slide-number">02</p>
-          <p class="slide-number">03</p>
-          <p class="slide-number">04</p>
-          <p class="slide-number">05</p>
-          <p class="slide-number">06</p> -->
           <?php
 $sql = "SELECT * FROM images";
 $result = mysqli_query($conn, $sql);

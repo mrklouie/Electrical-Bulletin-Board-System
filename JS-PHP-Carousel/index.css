@@ -316,3 +316,61 @@ button:hover {
 .modal-container {
   border: 1px solid black;
 }
+
+/* pop-up modal */
+
+.pop-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 200ms ease-in-out;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 1;
+  padding: 1rem;
+  width: 900px;
+  max-width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 60%;
+  max-height: 80%;
+  border-radius: 30px;
+}
+
+.pop-modal.activee {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.pop-modal-title {
+  font-weight: bold;
+}
+
+.section-modal {
+}
+
+.right-modal {
+  outline: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.email {
+  padding: 0.5rem 1rem;
+}
+
+.email:focus::placeholder {
+  color: transparent;
+}
+
+.email::placeholder {
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+/* .email::placeholder {
+  color: #222;
+  transition: color 0.3s ease;
+} */

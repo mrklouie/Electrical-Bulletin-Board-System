@@ -2,6 +2,7 @@
 require "includes/db.php";
 session_start();
 if (isset($_POST["upload"])) {
+
     $name = $_FILES["file"]["name"];
     $type = $_FILES["file"]["type"];
     $size = $_FILES["file"]["size"];
@@ -73,9 +74,21 @@ if (isset($_POST["upload"])) {
                         // }
                         // SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
 
+                        $sql = "SELECT * FROM images";
+                        $result = mysqli_query($conn2, $sql);
+                        $rowsCount = mysqli_num_rows($result);
+
+                        $sql = "CREATE TABLE table{$rowsCount} ( "
+                            . "cid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+                            . "message TEXT NOT NULL"
+                            . ")";
+
+                        $result = mysqli_query($conn2, $sql);
+
                         $_SESSION["success"] = "Uploaded to the database";
                         header("Location: index.php?uploaded");
                         exit;
+
                     }
                 } else {
                     $_SESSION["success"] = "File size too big!";

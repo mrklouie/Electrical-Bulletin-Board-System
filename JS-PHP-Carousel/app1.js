@@ -2,6 +2,7 @@ const slider = document.querySelector(".slider");
 const active = document.querySelector(".active");
 const nextSlide = document.getElementById("next-slide");
 const prevSlide = document.getElementById("prev-slide");
+const popModal = document.querySelector(".pop-modal");
 
 
 
@@ -12,7 +13,6 @@ let controls = document.querySelector(".slides");
 let details = document.querySelectorAll(".details");
 let detailsSection = document.querySelector(".details-section");
 let slidesNumber = document.querySelectorAll(".slides-number");
-
 
 
 //Variables
@@ -37,6 +37,19 @@ var whichModal;
 
 
 
+setTimeout(()=>{
+    popModal.classList.add("activee");
+    overlay.classList.add("activee");
+}, 5000);
+
+
+overlay.addEventListener("click", ()=>{
+    overlay.classList.remove("activee");
+    popModal.classList.remove("activee");
+})
+
+
+console.log("Images length: " + images.length + "\nDetails Length: " + details.length + "\nModals Length: " + modals.length);
 if(openModalBtn.length == 1 && closeModalBtn.length == 1){  
     
     overlay.addEventListener("click", ()=>{
@@ -45,36 +58,26 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
             closeModal(modal);
         })
     })
-    
     openModalBtn.forEach(buttons =>{
         buttons.addEventListener("click", ()=>{
             const modal = document.querySelector(buttons.dataset.openModal);
             openModal(modal);
         })
     })
-    
     closeModalBtn.forEach(buttons =>{
         buttons.addEventListener("click", ()=>{
             const modal = buttons.closest(".my-modal");
             closeModal(modal);
         })
     })
-    
-    
     function openModal(modal){
         modal.classList.add("activee");
         overlay.classList.add("activee");
     }
-    
-    
-    
     function closeModal(modal){
         modal.classList.remove("activee");
         overlay.classList.remove("activee");
     }
-    
-
-    
 }
 
 let interval = 2000;
@@ -244,6 +247,35 @@ function recalling(){
             prev();
         })
 
+        nextSlide.addEventListener("mouseenter", ()=>{
+            clearInterval(autoPlayInterval);
+        })
+
+        nextSlide.addEventListener("mouseleave", ()=>{
+            autoPlay();
+        })
+
+        const autoPlay=()=>{
+            autoPlayInterval = setInterval(()=>{
+                next();
+            }, interval)
+        }
+
+        autoPlay();
+
+        slider.addEventListener("mouseenter", ()=>{
+            clearInterval(autoPlayInterval);
+        })
+
+        overlay.addEventListener("click", ()=>{
+            autoPlay();
+        })
+
+        slider.addEventListener("mouseleave", ()=>{
+            if(!modals[counterImages].classList.contains("activee")){
+                autoPlay();
+            }
+        })
        
 
     }else if(images.length  === 3){
@@ -645,9 +677,8 @@ function recalling(){
         overlay.addEventListener("click", ()=>{
             autoPlay();
         })
-        slider.addEventListener("mouseleave", ()=>{
-           
 
+        slider.addEventListener("mouseleave", ()=>{
         if(!modals[counterImages].classList.contains("activee")){
             autoPlay();
         }
