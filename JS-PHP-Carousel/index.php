@@ -132,8 +132,44 @@ if ($rowsCount >
         <!-- END MODAL -->
       </div>
     </div>
+    <div class="second-container">
+        <div class="comment-section-container">
+          <div class="comment-header">
+          <h2>Share us your thoughts here</h2>
+          </div>
+          <div class="comment-section">
+            <?php
+$sql = "SELECT * FROM tbl_comments";
+$result = mysqli_query($conn3, $sql);
+$rowsCount = mysqli_num_rows($result);
+if ($rowsCount > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
 
+        ?>
+            <div class="show-comments">
+              <form action="delete.php" method ="POST">
+              <input type="hidden" name="cid" value="<?php echo $row["cid"]; ?>">
+             <textarea id="user-comments"name="user-comments" readonly>@<?php echo $row["username"] . " -- " . $row["message"]; ?></textarea>
+             <button class="delete-comment" type="submit" name="delete-comment">&times;</button>
+
+             </form>
+             <button class="update-comment" type="submit" name="update-comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            </div>
+            <?php
+}
+}
+?>
+            <form action="comment.php" method="POST">
+              <input type="hidden" name="username" value="<?php echo $_SESSION["sessionUsername"] ?>">
+              <textarea name="comment"></textarea>
+              <br>
+              <button type="submit" name="submit" class="comment">Comment</button>
+            </form>
+          </div>
+        </div>
+    </div>
     <div id="overlay"></div>
+
     <script src="app1.js"></script>
   </body>
 </html>

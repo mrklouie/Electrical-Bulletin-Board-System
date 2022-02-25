@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;700;800&display=swap");
+:root {
+  --citcs: #cc2a49;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -49,6 +53,7 @@
   font-size: 4rem;
   font-weight: 800;
   text-transform: uppercase;
+  color: var(--citcs);
 }
 
 .details p {
@@ -374,3 +379,93 @@ button:hover {
   color: #222;
   transition: color 0.3s ease;
 } */
+
+.second-container {
+  background-image: linear-gradient(to bottom, #791325, var(--citcs));
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-section-container {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: white;
+  margin-top: -6rem;
+  border: 1px solid #e2d1d1;
+  width: 62rem;
+}
+.comment-section-container h2 {
+  padding-top: 5rem;
+}
+.comment-header {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-section {
+  padding: 5rem;
+  width: 100%;
+}
+
+.show-comments {
+  display: grid;
+  grid-template-columns: 25fr 1fr;
+  grid-gap: 0;
+}
+
+#user-comments {
+  width: 94%;
+}
+
+.show-comments form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-comments .delete-comment {
+  border-style: none;
+  font-size: 1.5rem;
+  background: none;
+  color: black;
+  width: 2rem;
+}
+
+.show-comments .update-comment {
+  border-style: none;
+  font-size: 1rem;
+  margin-left: 1rem;
+  background: none;
+  color: black;
+  width: 2rem;
+}
+
+.show-comments form > textarea {
+  margin-bottom: 0.5rem;
+}
+
+.comment-section textarea {
+  width: 88.5%;
+  padding: 0.5rem 1rem;
+}
+.comment-section .comment {
+  padding: 0.9rem;
+  border-style: none;
+  background-color: var(--citcs);
+  color: whitesmoke;
+}
+
+.comment-section .messages textarea {
+  margin: 0;
+}
+/* .comment-section .messages {
+  border: 1px solid black;
+  margin: 1rem 0;
+  padding: 1rem;
+} */
+
+.fa {
+  color: var(--citcs);
+}
+
+/* #cc2a49
+#791325 */

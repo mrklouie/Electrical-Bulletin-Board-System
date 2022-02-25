@@ -3,7 +3,14 @@ const active = document.querySelector(".active");
 const nextSlide = document.getElementById("next-slide");
 const prevSlide = document.getElementById("prev-slide");
 const popModal = document.querySelector(".pop-modal");
-
+const updateComment = document.querySelectorAll(".update-comment");
+var whichComment;
+updateComment.forEach((comment, index) =>{
+    comment.addEventListener("click", ()=>{
+        whichComment = index;
+        console.log("You cliked: " + whichComment);
+    })
+})
 
 
 
@@ -36,11 +43,11 @@ let modals = document.querySelectorAll(".my-modal");
 var whichModal;
 
 
-
-setTimeout(()=>{
-    popModal.classList.add("activee");
-    overlay.classList.add("activee");
-}, 5000);
+//------POP UP MODAL-------//
+// setTimeout(()=>{
+//     popModal.classList.add("activee");
+//     overlay.classList.add("activee");
+// }, 5000);
 
 
 overlay.addEventListener("click", ()=>{
