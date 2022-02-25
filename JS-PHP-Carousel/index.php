@@ -144,16 +144,22 @@ $result = mysqli_query($conn3, $sql);
 $rowsCount = mysqli_num_rows($result);
 if ($rowsCount > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-
         ?>
             <div class="show-comments">
               <form action="delete.php" method ="POST">
               <input type="hidden" name="cid" value="<?php echo $row["cid"]; ?>">
-             <textarea id="user-comments"name="user-comments" readonly>@<?php echo $row["username"] . " -- " . $row["message"]; ?></textarea>
+             <textarea id="user-comments"name="user-comments" readonly><?php echo $row["username"] . "&#13;&#10;" . $row["message"]; ?></textarea>
+             <?php if ($_SESSION["sessionUsername"] == $row["username"]) {
+            ?>
              <button class="delete-comment" type="submit" name="delete-comment">&times;</button>
-
+             <?php }?>
              </form>
+             <form action="#" method="POST">
+             <?php if ($_SESSION["sessionUsername"] == $row["username"]) {
+            ?>
              <button class="update-comment" type="submit" name="update-comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+             <?php }?>
+             </form>
             </div>
             <?php
 }

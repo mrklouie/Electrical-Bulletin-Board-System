@@ -49,6 +49,17 @@ var whichModal;
 //     overlay.classList.add("activee");
 // }, 5000);
 
+const tx = document.getElementsByTagName("textarea");
+for (let i = 0; i < tx.length; i++) {
+  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+  tx[i].addEventListener("input", OnInput, false);
+}
+
+function OnInput() {
+  this.style.height = "auto";
+  this.style.height = (this.scrollHeight) + "px";
+}
+
 
 overlay.addEventListener("click", ()=>{
     overlay.classList.remove("activee");
@@ -87,7 +98,7 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
     }
 }
 
-let interval = 2000;
+let interval = 5000;
 var firstCloneDetails;
 var LastCloneImages;
 var extraCloneImages1;

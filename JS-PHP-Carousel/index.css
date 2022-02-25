@@ -390,7 +390,7 @@ button:hover {
 .comment-section-container {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   background-color: white;
-  margin-top: -6rem;
+  margin-top: -10rem;
   border: 1px solid #e2d1d1;
   width: 62rem;
 }
@@ -414,7 +414,7 @@ button:hover {
 }
 
 #user-comments {
-  width: 94%;
+  width: 90%;
 }
 
 .show-comments form {
@@ -444,7 +444,7 @@ button:hover {
 }
 
 .comment-section textarea {
-  width: 88.5%;
+  width: 100%;
   padding: 0.5rem 1rem;
 }
 .comment-section .comment {
