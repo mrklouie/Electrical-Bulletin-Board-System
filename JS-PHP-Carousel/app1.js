@@ -4,14 +4,22 @@ const nextSlide = document.getElementById("next-slide");
 const prevSlide = document.getElementById("prev-slide");
 const popModal = document.querySelector(".pop-modal");
 const updateComment = document.querySelectorAll(".update-comment");
+const userComments = document.querySelectorAll(".user-comment");
+const saveChanges = document.querySelectorAll(".save-changes-comment");
+console.log(userComments.length);
 var whichComment;
+
 updateComment.forEach((comment, index) =>{
     comment.addEventListener("click", ()=>{
         whichComment = index;
-        console.log("You cliked: " + whichComment);
+        const x = comment.closest(".form-group-comments");
+        const textArea = x.querySelector("textarea");
+        textArea.removeAttribute("readonly");
+        updateComment[whichComment].style.display = "none";
+        saveChanges[whichComment].style.display = "inline-block";
+        console.log(x);
     })
 })
-
 
 
 let images = document.querySelectorAll("img");

@@ -1,6 +1,10 @@
 <?php
 require "db.php";
 session_start();
+$user = "Guest";
+if (isset($_SESSION["sessionUsername"])) {
+    $user = $_SESSION["sessionUsername"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +44,7 @@ session_start();
           <div class="user">
             <p><?php
 
-echo $_SESSION["sessionUsername"] ?></p>
+echo $user ?></p>
           </div>
           <ul>
             <li><a href="../index.php">Manage</a></li>
@@ -135,42 +139,36 @@ if ($rowsCount >
     <div class="second-container">
         <div class="comment-section-container">
           <div class="comment-header">
-          <h2>Share us your thoughts here</h2>
+          <h2 class="comment-section-title">Share us your thoughts here</h2>
           </div>
-          <div class="comment-section">
-            <?php
+          <?php
 $sql = "SELECT * FROM tbl_comments";
 $result = mysqli_query($conn3, $sql);
-$rowsCount = mysqli_num_rows($result);
-if ($rowsCount > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
-            <div class="show-comments">
-              <form action="delete.php" method ="POST">
-              <input type="hidden" name="cid" value="<?php echo $row["cid"]; ?>">
-             <textarea id="user-comments"name="user-comments" readonly><?php echo $row["username"] . "&#13;&#10;" . $row["message"]; ?></textarea>
-             <?php if ($_SESSION["sessionUsername"] == $row["username"]) {
-            ?>
-             <button class="delete-comment" type="submit" name="delete-comment">&times;</button>
-             <?php }?>
-             </form>
-             <form action="#" method="POST">
-             <?php if ($_SESSION["sessionUsername"] == $row["username"]) {
-            ?>
-             <button class="update-comment" type="submit" name="update-comment"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-             <?php }?>
-             </form>
+while ($row = mysqli_fetch_assoc($result)) {
+    ?>
+          <div class="show-comments">
+
+            <div class="form-group-comments">
+              <form action="comment.php" method="POST">
+                <input type="hidden" name="cid" value="<?php echo $row["cid"] ?>">
+                <p class="username"><?php echo $row["username"]; ?></p>
+                <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
+                <?php if ($user == $row["username"]) {?>
+                <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
+                <button class="update-comment" type="button"><i class="fa fa-pencil"></i></i></button>
+                <button class="save-changes-comment" type="submit" name="submit-changes"><i class="fa fa-check"></i></button>
+              </form>
             </div>
-            <?php
-}
-}
-?>
-            <form action="comment.php" method="POST">
-              <input type="hidden" name="username" value="<?php echo $_SESSION["sessionUsername"] ?>">
-              <textarea name="comment"></textarea>
-              <br>
-              <button type="submit" name="submit" class="comment">Comment</button>
-            </form>
+          </div>
+          <?php }}?>
+          <div class="comment-section">
+            <div class="form-group">
+              <form action="comment.php" method="POST">
+                <input type="hidden" name="username" value="<?php echo $user ?>">
+                <textarea name="comment" class="comment"></textarea>
+                <button type="submit-comment" name="submit-comment" class="submit-comment">Comment</button>
+              </form>
+            </div>
           </div>
         </div>
     </div>

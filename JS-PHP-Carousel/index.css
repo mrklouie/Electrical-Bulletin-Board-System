@@ -388,84 +388,83 @@ button:hover {
 }
 
 .comment-section-container {
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  background-color: white;
   margin-top: -10rem;
-  border: 1px solid #e2d1d1;
-  width: 62rem;
-}
-.comment-section-container h2 {
-  padding-top: 5rem;
-}
-.comment-header {
-  display: flex;
-  justify-content: center;
-}
-
-.comment-section {
+  background-color: white;
   padding: 5rem;
+  width: 50%;
+  border: 1px solid black;
+}
+.comment-section {
   width: 100%;
 }
-
-.show-comments {
-  display: grid;
-  grid-template-columns: 25fr 1fr;
-  grid-gap: 0;
-}
-
-#user-comments {
-  width: 90%;
-}
-
-.show-comments form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.show-comments .delete-comment {
-  border-style: none;
-  font-size: 1.5rem;
-  background: none;
-  color: black;
-  width: 2rem;
-}
-
-.show-comments .update-comment {
-  border-style: none;
-  font-size: 1rem;
-  margin-left: 1rem;
-  background: none;
-  color: black;
-  width: 2rem;
-}
-
-.show-comments form > textarea {
-  margin-bottom: 0.5rem;
-}
-
 .comment-section textarea {
   width: 100%;
-  padding: 0.5rem 1rem;
-}
-.comment-section .comment {
-  padding: 0.9rem;
-  border-style: none;
-  background-color: var(--citcs);
-  color: whitesmoke;
+  padding: 1rem;
 }
 
-.comment-section .messages textarea {
-  margin: 0;
+.form-group-comments {
+  position: relative;
 }
-/* .comment-section .messages {
-  border: 1px solid black;
-  margin: 1rem 0;
+
+.comment {
+  margin-top: 2rem;
+}
+
+.user-comment {
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.delete-comment {
+  position: absolute;
+  right: -1.5rem;
+  background: none;
+  border-style: none;
+  font-size: 1.3rem;
+  color: var(--citcs);
+}
+
+.update-comment {
+  position: absolute;
+  right: -3.5rem;
+  background: none;
+  border-style: none;
+  font-size: 0.9rem;
+  color: var(--citcs);
+}
+.save-changes-comment {
+  display: none;
+  position: absolute;
+  right: -3.5rem;
+  background: none;
+  border-style: none;
+  font-size: 0.9rem;
+  color: var(--citcs);
+}
+
+.update-comment:hover {
+  background: none;
+}
+
+.delete-comment:hover {
+  background: none;
+}
+.comment-section .submit-comment {
   padding: 1rem;
-} */
+  background-color: var(--citcs);
+  color: white;
+  border-style: none;
+}
+.comment-section-title {
+  text-align: center;
+}
+
+.username {
+  margin-bottom: 0.2rem;
+}
 
 .fa {
   color: var(--citcs);
 }
-
-/* #cc2a49
-#791325 */
