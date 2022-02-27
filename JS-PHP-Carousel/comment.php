@@ -38,23 +38,28 @@ if (isset($_POST["submit-comment"])) {
         exit;
     }
 } else if (isset($_POST["submit-changes"])) {
-    $message = $_POST["user-comment"];
-    $cid = $_POST["cid"];
-    echo $message;
+    if (!empty($_POST["user-comment"])) {
+        $message = $_POST["user-comment"];
+        $cid = $_POST["cid"];
 
-    $sql = "UPDATE tbl_comments SET message = ? WHERE cid = ?";
-    $stmt = mysqli_stmt_init($conn3);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: index.php?sqlerror");
-        exit;
+        $sql = "UPDATE tbl_comments SET message = ? WHERE cid = ?";
+        $stmt = mysqli_stmt_init($conn3);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: index.php?sqlerror");
+            exit;
+        } else {
+            mysqli_stmt_bind_param($stmt, "si", $message, $cid);
+            mysqli_stmt_execute($stmt);
+            header("Location: index.php?commentSuccess!");
+            exit;
+        }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn3);
     } else {
-        mysqli_stmt_bind_param($stmt, "si", $message, $cid);
-        mysqli_stmt_execute($stmt);
-        header("Location: index.php?commentSuccess!");
+        header("Location: index.php?Pleasetypesomething");
         exit;
     }
-    mysqli_stmt_close($stmt);
-    mysqli_close($conn3);
+
 }
 
 // if (!empty($_POST["comment"])) {

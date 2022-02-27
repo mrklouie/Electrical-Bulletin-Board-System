@@ -6,6 +6,7 @@ const popModal = document.querySelector(".pop-modal");
 const updateComment = document.querySelectorAll(".update-comment");
 const userComments = document.querySelectorAll(".user-comment");
 const saveChanges = document.querySelectorAll(".save-changes-comment");
+
 console.log(userComments.length);
 var whichComment;
 
@@ -18,6 +19,7 @@ updateComment.forEach((comment, index) =>{
         updateComment[whichComment].style.display = "none";
         saveChanges[whichComment].style.display = "inline-block";
         console.log(x);
+      
     })
 })
 

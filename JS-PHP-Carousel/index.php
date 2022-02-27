@@ -102,6 +102,7 @@ if ($rowsCount >
           ";}}?>
           <button class="btn-control" id="next-slide">&#129131;</button>
         </div>
+
         <div class="slider">
           <?php
 $sql = "SELECT * FROM images";
@@ -114,6 +115,7 @@ if ($rowsCount >
 }}
 ?>
         </div>
+
       </div>
       <div class="modal-container">
         <?php
@@ -140,7 +142,7 @@ if ($rowsCount >
     <div class="second-container">
         <div class="comment-section-container">
           <div class="comment-header">
-          <h2 class="comment-section-title">Share us your thoughts here</h2>
+          <h2 class="comment-section-title">COMMENT SOMETHING</h2>
           </div>
           <?php
 $sql = "SELECT * FROM tbl_comments";
@@ -152,13 +154,16 @@ while ($row = mysqli_fetch_assoc($result)) {
             <div class="form-group-comments">
               <form action="comment.php" method="POST">
                 <input type="hidden" name="cid" value="<?php echo $row["cid"] ?>">
-                <p class="username"><?php echo $row["username"]; ?></p>
+                <div class="subtexts">
+                <p class="username" style="font-weight: bold;"><?php echo $row["username"] ?></p>
                 <small style="font-size: 0.8rem;"><?php $orignialDate = $row["date"];
-    echo $newDate = date("d, F, Y l", strtotime($orignialDate));
+    echo $newDate = date("d, F, Y l h:i: a", strtotime($orignialDate));
     ?></small>
+    </div>
                 <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
                 <?php if ($user == $row["username"]) {?>
                 <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
+                <input type="hidden" name="date" value="<?php echo date("Y/m/d h:i:a") ?>">
                 <button class="update-comment" type="button"><i class="fa fa-pencil"></i></i></button>
                 <button class="save-changes-comment" type="submit" name="submit-changes"><i class="fa fa-check"></i></button>
               </form>
