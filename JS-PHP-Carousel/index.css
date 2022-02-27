@@ -443,6 +443,9 @@ button:hover {
   font-size: 0.9rem;
   color: var(--citcs);
 }
+.save-changes-comment:hover {
+  background: none;
+}
 
 .update-comment:hover {
   background: none;
@@ -462,9 +465,13 @@ button:hover {
 }
 
 .username {
-  margin-bottom: 0.2rem;
+  margin-bottom: -0.2rem;
 }
 
 .fa {
   color: var(--citcs);
+}
+
+.go-to {
+  color: blue !important;
 }

@@ -1,6 +1,7 @@
 <?php
 require "db.php";
 session_start();
+date_default_timezone_set("Asia/Manila");
 $user = "Guest";
 if (isset($_SESSION["sessionUsername"])) {
     $user = $_SESSION["sessionUsername"];
@@ -152,6 +153,9 @@ while ($row = mysqli_fetch_assoc($result)) {
               <form action="comment.php" method="POST">
                 <input type="hidden" name="cid" value="<?php echo $row["cid"] ?>">
                 <p class="username"><?php echo $row["username"]; ?></p>
+                <small style="font-size: 0.8rem;"><?php $orignialDate = $row["date"];
+    echo $newDate = date("d, F, Y l", strtotime($orignialDate));
+    ?></small>
                 <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
                 <?php if ($user == $row["username"]) {?>
                 <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
@@ -161,14 +165,25 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
           </div>
           <?php }}?>
+          <?php
+if (isset($_SESSION["sessionUsername"])) {
+    ?>
           <div class="comment-section">
             <div class="form-group">
               <form action="comment.php" method="POST">
                 <input type="hidden" name="username" value="<?php echo $user ?>">
+                <input type="hidden" name="date" value="<?php echo date("Y/m/d h:i:a") ?>">
                 <textarea name="comment" class="comment"></textarea>
                 <button type="submit-comment" name="submit-comment" class="submit-comment">Comment</button>
               </form>
             </div>
+            <?php
+} else if (empty($_SESSION["sessionUsername"])) {
+    ?>
+  <p style="text-align: center">You must be logged in to comment<a href="http://localhost/Electrical-Bulletin-Board-System/login.php" class="go-to"> here</a></p>
+<?php
+}?>
+
           </div>
         </div>
     </div>
