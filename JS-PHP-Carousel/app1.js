@@ -23,14 +23,12 @@ updateComment.forEach((comment, index) =>{
     })
 })
 
-
 let images = document.querySelectorAll("img");
 let slides = document.querySelectorAll(".controls p");
 let controls = document.querySelector(".slides");
 let details = document.querySelectorAll(".details");
 let detailsSection = document.querySelector(".details-section");
 let slidesNumber = document.querySelectorAll(".slides-number");
-
 
 //Variables
 var autoPlayInterval;
@@ -198,8 +196,28 @@ function recalling(){
         
             })
         })
+     
+        function defaultSize(){
+        var sizeWidth = images[0].clientWidth + 40;
+        console.log(sizeWidth);
+        window.addEventListener("resize", ()=>{
 
-        slider.style.transform = `translateY(${-size * counterImages}px)`;
+            if(!window.innerWidth <= 768){
+                slider.style.transform = `translateY(${-size * counterImages}px)`;       
+            }else{
+
+            }
+
+            if(window.innerWidth <= 768){
+                slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;       
+            }
+        })
+        if(window.innerWidth > 768){
+            slider.style.transform = `translateY(${-size * counterImages}px)`;       
+        }
+    }
+        
+        defaultSize();
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
         details[index].style.opacity = "1";
 
@@ -289,7 +307,7 @@ function recalling(){
             }, interval)
         }
 
-        autoPlay();
+        // autoPlay();
 
         slider.addEventListener("mouseenter", ()=>{
             clearInterval(autoPlayInterval);
@@ -728,8 +746,6 @@ function recalling(){
         prevSlide.style.display = "none";
     }
     
-
-
 
 
 

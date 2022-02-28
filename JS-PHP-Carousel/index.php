@@ -28,6 +28,7 @@ if (isset($_SESSION["sessionUsername"])) {
   </head>
   <body>
     <div class="container-fluid">
+
       <!-- START MODAL -->
       <div class="pop-modal" id="pop-modal">
         <div class="section-modal left-modal">
@@ -82,7 +83,8 @@ if ($rowsCount >
         </div>
       </div>
       <div class="section right-section">
-        <div class="controls">
+
+        <div class="controls" id="controls">
           <button
             class="btn-control"
             id="prev-slide"
@@ -101,6 +103,7 @@ if ($rowsCount >
           <p class='slides-number'>0" . ($i + 1) . "</p>
           ";}}?>
           <button class="btn-control" id="next-slide">&#129131;</button>
+
         </div>
 
         <div class="slider">
