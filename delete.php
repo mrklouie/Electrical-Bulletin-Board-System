@@ -8,7 +8,6 @@ if (isset($_POST["delete"])) {
     if (!empty($_POST["id"])) {
         $sql = "SELECT images FROM images WHERE id =" . $_POST["id"];
         $result = mysqli_query($conn2, $sql);
-        $rowsCount = mysqli_num_rows($result);
         if ($row = mysqli_fetch_assoc($result)) {
             $sql = "DELETE from images WHERE id = '" . $_POST["id"] . "'";
             $result = mysqli_query($conn2, $sql);

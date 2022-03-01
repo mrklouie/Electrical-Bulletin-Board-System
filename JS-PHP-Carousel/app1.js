@@ -57,6 +57,21 @@ var whichModal;
 //     overlay.classList.add("activee");
 // }, 5000);
 
+
+// window.addEventListener("resize", ()=>{
+//     var sizeWidth = images[0].clientWidth + 40;
+//     if(window.innerWidth <= 768){
+//         slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;
+//     }
+//     if(window.innerWidth <=768){
+//         slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;   
+//     }
+// })
+// if(window.innerWidth > 768){
+//     slider.style.transform = `translateY(${-size * counterImages}px)`;       
+// }
+
+
 const tx = document.getElementsByTagName("textarea");
 for (let i = 0; i < tx.length; i++) {
   tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
@@ -120,10 +135,74 @@ function recalling(){
 }
 
 
+function mobileView(){
+    var firstCloneImage;
+    var lastCloneImage;
+    const nextImage = document.getElementById("next-image");
+    const prevImage = document.getElementById("prev-image");
+    let counter = 1;
+    let size = images[0].clientWidth;
+    size += 16;
+    console.log("resized");
+    if(window.innerWidth > 768){
+        location.reload();
+    }else if(window.innerWidth <= 768){
+        if(images.length == 2){
+            firstCloneImage = images[0].cloneNode(true);
+            lastCloneImage = images[images.length -1].cloneNode(true);
+    
+            firstCloneImage.id = "first-clone-image";
+            lastCloneImage.id = "last-clone-image";
+    
+            slider.append(firstCloneImage);
+            slider.prepend(lastCloneImage);
+        }
+       recalling();
+        console.log("Images: " + images.length + "\nDetails: " + details.length);
+        slider.style.transform = `translateX(${-size * counter}px)`;
+     
+        nextImage.addEventListener("click", ()=>{
+            images = document.querySelectorAll("img");
+            if(counter == images.length -1){
+                console.log("hopya");
+                counter = 1;
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(${-size * counter}px)`;
+            }else{
+                counter++;
+                slider.style.transform = `translateX(${-size * counter}px)`;
+                slider.style.transition = "0.7s";
+            }
+            
+        })
 
 
-    if(images.length == 2){
+        prevImage.addEventListener("click", ()=>{
+            images = document.querySelectorAll("img");
+            if(counter == 0){
+                counter = images.length -2;
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(${-size * counter}px)`;
+            }else{
+                counter--;
+                slider.style.transform = `translateX(${-size * counter}px)`;
+                slider.style.transition = "0.7s";
+            }
+        })
+    }
+}
+
+window.addEventListener("resize", mobileView);
+
+
+if(window.innerWidth <= 768){
+    mobileView();
+}else{
+
+    if(images.length == 2 && window.innerWidth > 768){ 
+        console.log("inner width is > 768px");
         counterImages = 2;
+        slider.style.transform = `translateY(${-size * counterImages}px)`;  
         index = 2;
         //CLONING MODALS
         let firstCloneModal = modals[0].cloneNode(true);
@@ -138,15 +217,11 @@ function recalling(){
         let extraCloneImages  = images[1].cloneNode(true);
         let extraCloneImages1 = images[0].cloneNode(true);
     
-
-
         //CLONING DETAILS
         let firstCloneDetails = details[0].cloneNode(true);
         let lastCloneDetails = details[details.length -1].cloneNode(true);
         let extraCloneDetails = details[1].cloneNode(true);
         let extraCloneDetails1 = details[0].cloneNode(true);
-
-
 
         //GIVING CLONE'S ID
         firstCloneImages.id = "first-clone-imaegs";
@@ -197,27 +272,7 @@ function recalling(){
             })
         })
      
-        function defaultSize(){
-        var sizeWidth = images[0].clientWidth + 40;
-        console.log(sizeWidth);
-        window.addEventListener("resize", ()=>{
-
-            if(!window.innerWidth <= 768){
-                slider.style.transform = `translateY(${-size * counterImages}px)`;       
-            }else{
-
-            }
-
-            if(window.innerWidth <= 768){
-                slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;       
-            }
-        })
-        if(window.innerWidth > 768){
-            slider.style.transform = `translateY(${-size * counterImages}px)`;       
-        }
-    }
-        
-        defaultSize();
+       
         active.style.transform = `translate(50%, ${sizeActive * counterSlides}px)`;
         details[index].style.opacity = "1";
 
@@ -307,7 +362,7 @@ function recalling(){
             }, interval)
         }
 
-        // autoPlay();
+        autoPlay();
 
         slider.addEventListener("mouseenter", ()=>{
             clearInterval(autoPlayInterval);
@@ -745,9 +800,11 @@ function recalling(){
         nextSlide.style.display = "none";
         prevSlide.style.display = "none";
     }
-    
 
 
 
+
+
+}
 
 

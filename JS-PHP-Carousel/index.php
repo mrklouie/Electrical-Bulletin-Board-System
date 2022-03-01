@@ -27,8 +27,14 @@ if (isset($_SESSION["sessionUsername"])) {
     />
   </head>
   <body>
-    <div class="container-fluid">
-
+    <div class="container-fluid" >
+      <nav class="mobile-nav">
+        <p class="user">Mark Louie</p>
+        <ul>
+          <li><a href="../index.php">Manage</a></li>
+          <li><a href="#">Contact</a> </li>
+        </ul>
+      </nav>
       <!-- START MODAL -->
       <div class="pop-modal" id="pop-modal">
         <div class="section-modal left-modal">
@@ -83,7 +89,8 @@ if ($rowsCount >
         </div>
       </div>
       <div class="section right-section">
-
+      <button class="button-control next" id="next-image"><i class="fa fa-arrow-right"></i></button>
+          <button class="button-control prev" id="prev-image"><i class="fa fa-arrow-left"></i></button>
         <div class="controls" id="controls">
           <button
             class="btn-control"
@@ -107,6 +114,7 @@ if ($rowsCount >
         </div>
 
         <div class="slider">
+
           <?php
 $sql = "SELECT * FROM images";
 $result = mysqli_query($conn, $sql);
@@ -117,6 +125,8 @@ if ($rowsCount >
           <?php
 }}
 ?>
+          <div class="image-controls">
+          </div>
         </div>
 
       </div>
@@ -159,14 +169,15 @@ while ($row = mysqli_fetch_assoc($result)) {
                 <input type="hidden" name="cid" value="<?php echo $row["cid"] ?>">
                 <div class="subtexts">
                 <p class="username" style="font-weight: bold;"><?php echo $row["username"] ?></p>
-                <small style="font-size: 0.8rem;"><?php $orignialDate = $row["date"];
-    echo $newDate = date("d, F, Y l h:i: a", strtotime($orignialDate));
+                <small style="font-size: 0.8rem;"><?php
+// $originalDate = $row["date"];
+//     echo $newDate = date("m/d/Y h:i A", strtotime($originalDate));
+    echo date("m/d/Y h:i A", strtotime($row["date"]));
     ?></small>
     </div>
                 <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
                 <?php if ($user == $row["username"]) {?>
                 <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
-                <input type="hidden" name="date" value="<?php echo date("Y/m/d h:i:a") ?>">
                 <button class="update-comment" type="button"><i class="fa fa-pencil"></i></i></button>
                 <button class="save-changes-comment" type="submit" name="submit-changes"><i class="fa fa-check"></i></button>
               </form>
@@ -180,7 +191,7 @@ if (isset($_SESSION["sessionUsername"])) {
             <div class="form-group">
               <form action="comment.php" method="POST">
                 <input type="hidden" name="username" value="<?php echo $user ?>">
-                <input type="hidden" name="date" value="<?php echo date("Y/m/d h:i:a") ?>">
+                <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s") ?>">
                 <textarea name="comment" class="comment"></textarea>
                 <button type="submit-comment" name="submit-comment" class="submit-comment">Comment</button>
               </form>
