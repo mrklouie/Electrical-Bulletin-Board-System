@@ -31,7 +31,11 @@ if (isset($_SESSION["sessionUsername"])) {
       <nav class="mobile-nav">
         <p class="user">Mark Louie</p>
         <ul>
+
+          <?php if (isset($_SESSION["sessionUsername"])) {
+    ?>
           <li><a href="../index.php">Manage</a></li>
+          <?php }?>
           <li><a href="#">Contact</a> </li>
         </ul>
       </nav>
@@ -41,9 +45,12 @@ if (isset($_SESSION["sessionUsername"])) {
           <h2></h2>
         </div>
         <div class="section-modal right-modal">
+          <div class="subhead">
           <h2 class="pop-modal-title">SUBSCRIBE</h2>
-          <p class="pop-modal-subtext">AND DON'T MISS OUT</p>
-          <input type="email" name="email" class="email" placeholder="Enter email here">
+          <p class="pop-modal-subtext">and don't miss out any upcoming news in the futue so you won't be left behind!</p>
+          <input type="email" name="email" class="email" placeholder="xyz@gmail.com...">
+          </div>
+          <button id="submit-modal">SUBMIT</button>
         </div>
       </div>
       <!-- END MODAL -->
@@ -176,6 +183,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     ?></small>
     </div>
                 <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
+
                 <?php if ($user == $row["username"]) {?>
                 <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
                 <button class="update-comment" type="button"><i class="fa fa-pencil"></i></i></button>
@@ -202,7 +210,6 @@ if (isset($_SESSION["sessionUsername"])) {
   <p style="text-align: center">You must be logged in to comment<a href="http://localhost/Electrical-Bulletin-Board-System/login.php" class="go-to"> here</a></p>
 <?php
 }?>
-
           </div>
         </div>
     </div>

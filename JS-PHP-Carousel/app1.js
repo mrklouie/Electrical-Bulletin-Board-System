@@ -7,6 +7,7 @@ const updateComment = document.querySelectorAll(".update-comment");
 const userComments = document.querySelectorAll(".user-comment");
 const saveChanges = document.querySelectorAll(".save-changes-comment");
 
+
 console.log(userComments.length);
 var whichComment;
 
@@ -51,25 +52,54 @@ let modals = document.querySelectorAll(".my-modal");
 var whichModal;
 
 
-//------POP UP MODAL-------//
-// setTimeout(()=>{
-//     popModal.classList.add("activee");
-//     overlay.classList.add("activee");
-// }, 5000);
+var hadModal;
+var key;
+
+// ------POP UP MODAL-------//
+const submitModal = document.getElementById("submit-modal");
+submitModal.addEventListener("click", ()=>{
+    const email = document.querySelector(".email");
+    if(email.value !== ""){
+        localStorage.setItem("ifSeen", true);
+        console.log("submitted");
+    }else{
+        console.log("walang laman");
+    }
+
+    popModal.classList.remove("activee");
+    overlay.classList.remove("activee");
+})
+localStorage.clear();
+key = localStorage.getItem("ifSeen");
+if(!key){
+    setTimeout(()=>{
+        popModal.classList.add("activee");
+        overlay.classList.add("activee");
+    }, 5);
+    
+}
 
 
-// window.addEventListener("resize", ()=>{
-//     var sizeWidth = images[0].clientWidth + 40;
-//     if(window.innerWidth <= 768){
-//         slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;
-//     }
-//     if(window.innerWidth <=768){
-//         slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;   
-//     }
-// })
-// if(window.innerWidth > 768){
-//     slider.style.transform = `translateY(${-size * counterImages}px)`;       
-// }
+
+
+
+
+
+window.addEventListener("resize", ()=>{
+    var sizeWidth = images[0].clientWidth + 40;
+    if(window.innerWidth <= 768){
+        slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;
+    }
+    if(window.innerWidth <=768){
+        slider.style.transform = `translateX(${-sizeWidth * counterImages}px)`;   
+    }
+})
+if(window.innerWidth > 768){
+    slider.style.transform = `translateY(${-size * counterImages}px)`;       
+}
+
+
+
 
 
 const tx = document.getElementsByTagName("textarea");
@@ -138,34 +168,42 @@ function recalling(){
 function mobileView(){
     var firstCloneImage;
     var lastCloneImage;
+    var extraCloneImage;
+    var extraCloneImage1;
     const nextImage = document.getElementById("next-image");
     const prevImage = document.getElementById("prev-image");
-    let counter = 1;
+    let counter = 2;
     let size = images[0].clientWidth;
     size += 16;
     console.log("resized");
     if(window.innerWidth > 768){
         location.reload();
     }else if(window.innerWidth <= 768){
+
         if(images.length == 2){
+            console.log("Images is equal to 2");
             firstCloneImage = images[0].cloneNode(true);
             lastCloneImage = images[images.length -1].cloneNode(true);
-    
+            extraCloneImage = images[1].cloneNode(true);
+            extraCloneImage1 = images[0].cloneNode(true);
             firstCloneImage.id = "first-clone-image";
             lastCloneImage.id = "last-clone-image";
+            
     
             slider.append(firstCloneImage);
             slider.prepend(lastCloneImage);
-        }
+            slider.append(extraCloneImage);
+            slider.prepend(extraCloneImage1);
+   
        recalling();
         console.log("Images: " + images.length + "\nDetails: " + details.length);
         slider.style.transform = `translateX(${-size * counter}px)`;
      
         nextImage.addEventListener("click", ()=>{
             images = document.querySelectorAll("img");
-            if(counter == images.length -1){
+            if(counter == images.length -2){
                 console.log("hopya");
-                counter = 1;
+                counter = 2;
                 slider.style.transition = "none";
                 slider.style.transform = `translateX(${-size * counter}px)`;
             }else{
@@ -179,8 +217,9 @@ function mobileView(){
 
         prevImage.addEventListener("click", ()=>{
             images = document.querySelectorAll("img");
-            if(counter == 0){
-                counter = images.length -2;
+            if(counter == 1){
+                console.log("hopya")
+                counter = images.length -3;
                 slider.style.transition = "none";
                 slider.style.transform = `translateX(${-size * counter}px)`;
             }else{
@@ -189,6 +228,123 @@ function mobileView(){
                 slider.style.transition = "0.7s";
             }
         })
+
+
+        }else if(images.length > 2){
+        counter = 2;
+        console.log("Modals length: " + modals.length);
+            
+
+        let firstCloneModal = modals[0].cloneNode(true);
+        let lastCloneModal = modals[modals.length -1].cloneNode(true);
+        let extraCloneModal = modals[1].cloneNode(true);
+        let extraCloneModal1 = modals[modals.length -2].cloneNode(true);
+
+
+        let firstCloneImage = images[0].cloneNode(true);
+        let lastCloneImage = images[images.length -1].cloneNode(true);
+        let extraCloneImage = images[1].cloneNode(true);
+        let extraCloneImage1 = images[images.length -2].cloneNode(true);
+
+        firstCloneImage.id = "first-clone-image";
+        lastCloneImage.id = "last-clone-image";
+
+        slider.append(firstCloneImage);
+        slider.prepend(lastCloneImage);
+        slider.append(extraCloneImage);
+        slider.prepend(extraCloneImage1);
+
+        modalContainer.append(firstCloneModal);
+        modalContainer.prepend(lastCloneModal);
+        modalContainer.append(extraCloneModal);
+        modalContainer.prepend(extraCloneModal1);
+
+        recalling();
+
+
+        // images.forEach((image, index) =>{
+        //     image.addEventListener("click", ()=>{
+        //         console.log("Image clicked: " +  index);
+        //     })
+        // })
+
+        // overlay.addEventListener("click", ()=>{
+        //     modals[whichModal].classList.remove("activee");
+        //     overlay.classList.remove("activee");
+        // }
+
+       openModalBtn.forEach((buttons, index)=>{
+           buttons.addEventListener("click", ()=>{
+               whichModal = index;
+               modals[whichModal].classList.add("activee");
+               overlay.classList.add("activee");
+           })
+       })
+
+        closeModalBtn.forEach((buttons, index)=>{
+            buttons.addEventListener("click", ()=>{
+                whichModal = index;
+                modals[whichModal].classList.remove("activee");
+                overlay.classList.remove("activee");
+            })
+        })
+
+
+        overlay.addEventListener("click", ()=>{
+            modals[whichModal].classList.remove("activee");
+            overlay.classList.remove("activee");
+        })
+        
+        // openModalBtn.forEach((buttons, index)=>{
+        //     buttons.addEventListener("click", ()=>{
+        //         whichModal = index;
+        //         modals[whichModal].classList.add("activee");
+        //         overlay.classList.add("activee");
+        //     })
+        // })
+
+        // closeModalBtn.forEach((buttons, index)=>{
+        //     buttons.addEventListener("click", ()=>{
+        //         whichModal = index;
+        //         modals[whichModal].classList.remove("activee");
+        //         overlay.classList.remove("activee");
+        //     })
+        // })
+
+        console.log("Images: " + images.length + "\nDetails: " + details.length);
+
+        slider.style.transform = `translateX(${-size * counter}px)`;
+        
+        const next=()=>{
+            if(images[counter].id == firstCloneImage.id){
+                console.log("Hopya");
+                counter = 2;
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(${-size * counter}px)`;
+            }else{
+                counter++;
+                slider.style.transform = `translateX(${-size * counter}px)`;
+                slider.style.transition = "0.7s";
+            }
+        }
+
+        const prev=()=>{
+            if(images[counter].id == lastCloneImage.id){
+                console.log("hopya");
+                counter = images.length -3;
+                slider.style.transition = "none";
+                slider.style.transform = `translateX(${-size * counter}px)`;
+            }else{
+                counter--;
+                slider.style.transform = `translateX(${-size * counter}px)`;
+                slider.style.transition = "0.7s";
+            }
+        }
+
+        nextImage.addEventListener("click", next);
+        prevImage.addEventListener("click", prev);
+    }
+
     }
 }
 
@@ -697,7 +853,6 @@ if(window.innerWidth <= 768){
                 if(counterSlides === slides.length){
                     //ACTIVE SLIDES
                     counterSlides = 0;
-      
                 }
                 counterImages++;
                 index++;
