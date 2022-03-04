@@ -57,6 +57,7 @@ var key;
 
 // ------POP UP MODAL-------//
 const submitModal = document.getElementById("submit-modal");
+const closePopModal = document.querySelector(".close-popup-modal");
 submitModal.addEventListener("click", ()=>{
     const email = document.querySelector(".email");
     if(email.value !== ""){
@@ -75,9 +76,14 @@ if(!key){
     setTimeout(()=>{
         popModal.classList.add("activee");
         overlay.classList.add("activee");
-    }, 5);
+    }, 3000);
     
 }
+
+closePopModal.addEventListener("click", ()=>{
+    popModal.classList.remove("activee");
+    overlay.classList.remove("activee");
+})
 
 
 
@@ -175,6 +181,7 @@ function mobileView(){
     let counter = 2;
     let size = images[0].clientWidth;
     size += 16;
+    let tempSize = size + 7;
     console.log("resized");
     if(window.innerWidth > 768){
         location.reload();
@@ -197,17 +204,20 @@ function mobileView(){
    
        recalling();
         console.log("Images: " + images.length + "\nDetails: " + details.length);
-        slider.style.transform = `translateX(${-size * counter}px)`;
+        slider.style.transform = `translateX(${-tempSize * counter}px)`;
      
         nextImage.addEventListener("click", ()=>{
             images = document.querySelectorAll("img");
             if(counter == images.length -2){
                 console.log("hopya");
                 counter = 2;
+                size = images[0].clientWidth;
+                size += 16;
                 slider.style.transition = "none";
                 slider.style.transform = `translateX(${-size * counter}px)`;
             }else{
                 counter++;
+                size += 2;
                 slider.style.transform = `translateX(${-size * counter}px)`;
                 slider.style.transition = "0.7s";
             }

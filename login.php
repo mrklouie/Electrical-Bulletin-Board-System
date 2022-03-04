@@ -19,12 +19,15 @@ session_start();
       <div class="card-container">
         <div class="section left">
           <div class="heading"><h2>Bulletin Board System</h2></div>
-          <img src="images/wavy1.svg" class="wave" />
-          <img src="images/undraw_website_builder_re_ii6e.svg" class="girl" />
+         <img src="images/citcs-wavy1.svg" class="wave" />
+          <img
+            src="images/citcs-undraw_website_builder_re_ii6e.svg"
+            class="girl"
+          />
         </div>
         <form action="includes/login-inc.php" method="POST">
           <div class="section right">
-            <img src="images/wavy sa baba.svg" alt="" class="bg-right" />
+          <img src="images/citcs-wavyyyyyy.svg" alt="" class="bg-right" />
             <div class="heading">
               <h2>Hello Again</h2>
               <p>Welcome back</p>

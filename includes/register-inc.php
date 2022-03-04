@@ -7,8 +7,10 @@ if (isset($_POST["signup"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
 
-    if (empty($username) || empty($password) || empty($confirmPassword)) {
+    if (empty($username) || empty($password) || empty($confirmPassword) || empty($fname) || empty($lname)) {
         $_SESSION["error"] = "Please fill up all required fields";
         header("Location: ../register.php?error");
         exit;
@@ -41,7 +43,7 @@ if (isset($_POST["signup"])) {
                 header("Location: ../register.php?usernamealreadytaken");
                 exit;
             } else {
-                $sql = "INSERT INTO users (username, password) VALUES (?,?)";
+                $sql = "INSERT INTO users (username, password, fname, lname) VALUES (?, ?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -50,7 +52,7 @@ if (isset($_POST["signup"])) {
                     exit;
                 } else {
                     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
-                    mysqli_stmt_bind_param($stmt, "ss", $username, $hashedPass);
+                    mysqli_stmt_bind_param($stmt, "ssss", $username, $hashedPass, $fname, $lname);
                     mysqli_stmt_execute($stmt);
                     $_SESSION["success"] = "Registered!";
                     header("Location: ../register.php?success");

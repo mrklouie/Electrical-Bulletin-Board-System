@@ -61,7 +61,9 @@ session_start();
         <div class="section left-section">
           <div class="left-item-container">
             <div class="left-item user-info">
-              <h4 class="name">Mark Louie</h4>
+              <h4 class="name">
+                <?php echo $_SESSION["sessionFname"] . " " . $_SESSION["sessionLname"] ?>
+              </h4>
               <p class="subtext">Admin Member</p>
             </div>
             <div class="left-item account-details">

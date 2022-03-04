@@ -3,13 +3,14 @@
   --tablet: 768px;
   --laptop: 992px;
   --desktop: 1200px;
+  --citcs: #cc2a49;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Poppins", sans-serif;
-  color: rgb(4, 170, 109);
+  color: var(--citcs);
 }
 
 .card-extra {
@@ -39,7 +40,7 @@ ul {
   font-weight: bold;
   font-size: 4vw;
   margin: 30px 0 30px 0;
-  color: rgb(4, 170, 109);
+  color: var(--citcs);
 }
 
 .container-fluid {
@@ -136,7 +137,7 @@ ul {
   position: absolute;
   top: 0;
   right: 0;
-  background: rgb(4, 170, 109);
+  background: var(--citcs);
   color: white;
   width: 25px;
   height: 25px;
@@ -213,7 +214,7 @@ ul {
   border: none;
   width: 80%;
   height: 150px;
-  background: rgb(4, 170, 109);
+  background: var(--citcs);
   border-radius: 30px;
   color: white;
   letter-spacing: 0.3em;
@@ -249,7 +250,7 @@ li i {
 /* ------------ MODAL ------------ */
 
 .modal-button {
-  background-color: rgb(4, 170, 109);
+  background-color: var(--citcs);
   border-radius: 5px;
   border-style: none;
   color: white;
@@ -294,7 +295,7 @@ li i {
   width: 90%;
   margin-bottom: 25px;
   color: black;
-  border: 1px solid rgb(4, 170, 109);
+  border: 1px solid var(--citcs);
   padding: 12px 20px;
   outline: none;
   transition: 0.2s ease-in-out;
@@ -302,8 +303,8 @@ li i {
   border-radius: 5px;
 }
 .modal-input:focus {
-  outline: 1px solid rgb(4, 170, 109);
-  box-shadow: 0 0 10px rgb(4, 170, 109);
+  outline: 1px solid var(--citcs);
+  box-shadow: 0 0 10px var(--citcs);
 }
 
 .modal-textarea {
@@ -311,16 +312,16 @@ li i {
   font-size: 1rem;
   color: black;
   padding: 12px 20px;
-  border: 1px solid rgb(4, 170, 109);
+  border: 1px solid var(--citcs);
   border-radius: 5px;
   width: 90%;
   transition: 0.2s ease-in-out;
 }
 
 .modal-textarea:focus {
-  outline: 1px solid rgb(4, 170, 109);
+  outline: 1px solid var(--citcs);
   border-radius: 5px;
-  box-shadow: 0 0 10px rgb(4, 170, 109);
+  box-shadow: 0 0 10px var(--citcs);
 }
 
 .modal-footer {

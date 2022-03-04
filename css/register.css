@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 :root {
-  --color: rgb(4, 170, 109);
+  --color: var(--citcs);
   --citcs: #cc2a49;
   --iphone: 375px;
 }
@@ -139,6 +139,7 @@ input:-webkit-autofill:active {
 .heading {
   margin-bottom: 2rem;
   text-align: center;
+  color: var(--citcs);
 }
 
 h2 {
