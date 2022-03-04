@@ -34,6 +34,9 @@ if (isset($_POST["login"])) {
                     $_SESSION["sessionId"] = $row["id"];
                     $_SESSION["sessionUsername"] = $row["username"];
                     $_SESSION["sessionEmail"] = $row["email"];
+                    $_SESSION["sessionFname"] = $row["fname"];
+                    $_SESSION["sessionLname"] = $row["lname"];
+
                     header("Location: ../index.php?loggedin");
                     exit;
                 }

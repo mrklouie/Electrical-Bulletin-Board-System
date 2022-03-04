@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 :root {
-  --color: rgb(4, 170, 109);
+  --color: var(--citcs);
+  --citcs: #cc2a49;
   --iphone: 375px;
 }
 
@@ -137,11 +138,11 @@ input:-webkit-autofill:active {
 
 h2 {
   font-size: 3.5rem;
-  color: rgb(4, 170, 109);
+  color: var(--citcs);
 }
 p {
   font-size: 1.5rem;
-  color: rgb(4, 170, 109);
+  color: var(--citcs);
 }
 
 .sign-up-section {
@@ -155,7 +156,7 @@ p {
 a {
   text-decoration: none;
   font-size: 1em;
-  color: rgb(4, 170, 109);
+  color: var(--citcs);
 }
 
 .sign-up-section::after {

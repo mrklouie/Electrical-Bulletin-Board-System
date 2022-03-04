@@ -49,6 +49,22 @@ session_start();?>
             </div>
             <?php unset($_SESSION["success"]);}?>
             <div class="form-group">
+            <i class="fa fa-user"></i>
+              <input
+                type="text"
+                name="fname"
+                placeholder="First name"
+              />
+            </div>
+            <div class="form-group">
+            <i class="fa fa-user"></i>
+              <input
+                type="text"
+                name="lname"
+                placeholder="Last name"
+              />
+            </div>
+            <div class="form-group">
               <i class="fa fa-user"></i>
               <input
                 type="text"
