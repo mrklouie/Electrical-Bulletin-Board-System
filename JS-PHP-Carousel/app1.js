@@ -20,7 +20,6 @@ updateComment.forEach((comment, index) =>{
         updateComment[whichComment].style.display = "none";
         saveChanges[whichComment].style.display = "inline-block";
         console.log(x);
-      
     })
 })
 

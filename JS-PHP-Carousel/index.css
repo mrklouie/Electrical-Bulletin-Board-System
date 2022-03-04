@@ -677,7 +677,12 @@ button:hover {
     flex-basis: 50px;
   }
 
+  .details-section {
+    transform: translateY(0);
+  }
+
   .right-section {
+    transform: translateY(0);
     position: relative;
     overflow-x: hidden;
   }
