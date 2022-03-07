@@ -1,16 +1,20 @@
-<?php session_start();
+<?php
+session_start();
 require "../JS-PHP-Carousel/db.php";
-?>
-<?php if (isset($_SESSION["sessionId"])) {
 
+?>
+
+<?php
+if (isset($_SESSION["sessionId"])) {
     ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Account</title>
+    <title>Change Password</title>
     <link rel="stylesheet" href="index.css?v=<?php echo time(); ?>" />
     <script
       src="https://kit.fontawesome.com/8d98474fa5.js"
@@ -18,7 +22,6 @@ require "../JS-PHP-Carousel/db.php";
     ></script>
   </head>
   <body>
-
     <div class="sidebar">
       <div class="heading-container">
         <div class="heading">
@@ -37,7 +40,7 @@ require "../JS-PHP-Carousel/db.php";
         <li id="li-home">
           <a href="../JS-PHP-Carousel/index.php">
             <i class="fa-solid fa-house-chimney-window"></i>
-            <span class="links-name">Home</span>
+            <span class="links-name">Back to Home</span>
           </a>
           <span class="tooltip">Home</span>
         </li>
@@ -56,67 +59,44 @@ require "../JS-PHP-Carousel/db.php";
           <span class="tooltip">Delete Account</span>
         </li>
       </ul>
-
       <div class="logout-container">
         <form action="logout.php" method="POST">
           <div class="form-group">
             <button class="logout-btn" type="submit" name="logout">
               <i class="fa-solid fa-arrow-right-from-bracket"></i>
-           </button>
-            <span class="logout-link">Logout</span>
-          </div>
+            </button>
+            <span class="logout-link">
+              Logout
+            </span>
+        </div>
         </form>
       </div>
 
-
-
-      </div>
-        <!-- Start of user-info -->
-        <?php
-$id = $_SESSION["sessionId"];
-    $sql = "SELECT * FROM users WHERE id = $id";
-    $result = mysqli_query($conn4, $sql);
-    while ($row = mysqli_fetch_assoc($result)) {
-        ?>
+    </div>
     <div class="user-info">
-      <h2 class="user"><?php echo $row["fname"] . " " . $row["lname"]; ?></h2>
+      <h2 class="user">Delete Account</h2>
+      <div class="alert">
+      <p class="subtext">This will permanently delete your account</p>
+      </div>
       <div class="grid-container">
         <div class="grid">
-          <form action="includes/user.php" method="POST" class="user-form" >
+          <form action="includes/password.php" class="password-form" method="POST">
             <div class="form-group">
-              <p>First Name</p>
-              <input type="text" name="fname" value="<?php echo $row["fname"] ?>" readonly />
+              <p>Password</p>
+              <input type="password" name="cOldPassword" value="" readonly/>
             </div>
-            <div class="form-group">
-              <p>Last Name</p>
-              <input type="text" name="lname" value="<?php echo $row["lname"]; ?>" readonly />
-            </div>
-            <div class="form-group">
-              <p>Email Address</p>
-              <input
-                type="email"
-                name="email"
-                value="<?php echo $row["email"]; ?>"
-                placeholder="Optional"
-                readonly
-              />
-            </div>
-            <div class="form-group">
-              <p>Username</p>
-              <input type="text" name="username" value="<?php echo $row["username"]; ?>" readonly />
-            </div>
-            <div class="btn-container">
-              <button type="button" name="submit" id="btn-edit">Edit</button>
+            <div class="btn-container" class="btn-container-pass">
+              <button type="button" name="submit" id="btn-edit">I understand</button>
               <button
-                type="button"
+                type="submit"
+                name = "changePass"
                 style="display: none"
                 id="btn-save-changes"
-                data-open-modal=#my-modal
+
               >
                 Save Changes
               </button>
               <button
-
                 type="button"
                 name="submit"
                 id="btn-cancel"
@@ -125,38 +105,15 @@ $id = $_SESSION["sessionId"];
                 Cancel
               </button>
             </div>
-            <!-- START MODAL -->
-            <div class="my-modal" id="my-modal">
-              <div class="modal-header">
-                <h2 class="title-modal">Enter your password to continue</h2>
-                <button type="button" class="close-modal" data-close-modal>&times;</button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group-modal">
-                    Password:
-                    <input type="password" name="password">
-                    Confirm Password:
-                    <input type="password" name="confirmPassword">
-                </div>
-                <div class="btn-submit-container">
-                <button type="submit" name="save">Enter</button>
-                </div>
-              </div>
-            </div>
-            <!-- END MODAL -->
+
           </form>
         </div>
       </div>
     </div>
-    <!-- End of user-info -->
-    <?php
-}
-    ?>
-      <div id="overlay"></div>
+
+    <div id="overlay"></div>
     <script src="index.js"></script>
   </body>
 </html>
-<?php } else {
-    echo "<script>alert('Whoops! bawal yan')</script>";
-}
+<?php }
 ?>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+require "../JS-PHP-Carousel/db.php";
+
+?>
+
+<?php
+if (isset($_SESSION["sessionId"])) {
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Change Password</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="index.css?v=<?php echo time(); ?>" />
     <script
       src="https://kit.fontawesome.com/8d98474fa5.js"
       crossorigin="anonymous"
@@ -41,40 +51,54 @@
           </a>
           <span class="tooltip">Change Password</span>
         </li>
+        <li id="li-change-pass">
+          <a href="delete.php">
+          <i class="fa-solid fa-trash-can"></i>
+            <span class="links-name">Delete Account</span>
+          </a>
+          <span class="tooltip">Delete Account</span>
+        </li>
       </ul>
+
       <div class="logout-container">
-        <div class="form-group">
-          <button class="logout-btn">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          </button>
-          <span class="logout-link">Logout</span>
+        <form action="logout.php" method="POST">
+          <div class="form-group">
+            <button class="logout-btn" type="submit" name="logout">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </button>
+            <span class="logout-link">
+              Logout
+            </span>
         </div>
+        </form>
       </div>
+
     </div>
     <div class="user-info">
       <h2 class="user">Change Password</h2>
       <div class="grid-container">
         <div class="grid">
-          <form action="#" class="password-form">
+          <form action="includes/password.php" class="password-form" method="POST">
             <div class="form-group">
               <p>Old Password</p>
-              <input type="text" name="fname" value="" />
+              <input type="password" name="cOldPassword" value="" readonly/>
             </div>
             <div class="form-group">
               <p>New Password</p>
-              <input type="text" name="lname" value="" />
+              <input type="password" name="cPassword" value="" readonly/>
             </div>
             <div class="form-group">
               <p>Confirm Password</p>
-              <input type="email" name="email" value="" />
+              <input type="password" name="cConfirmPassword" value="" readonly/>
             </div>
             <div class="btn-container" class="btn-container-pass">
               <button type="button" name="submit" id="btn-edit">Edit</button>
               <button
-                type="button"
-                name="submit"
+                type="submit"
+                name = "changePass"
                 style="display: none"
                 id="btn-save-changes"
+
               >
                 Save Changes
               </button>
@@ -87,11 +111,15 @@
                 Cancel
               </button>
             </div>
+
           </form>
         </div>
       </div>
     </div>
 
+    <div id="overlay"></div>
     <script src="index.js"></script>
   </body>
 </html>
+<?php }
+?>
