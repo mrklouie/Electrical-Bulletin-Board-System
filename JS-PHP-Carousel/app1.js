@@ -957,7 +957,11 @@ if(window.innerWidth <= 768){
         details[0].style.opacity = "1";
         nextSlide.style.display = "none";
         prevSlide.style.display = "none";
-        
+
+        const sizeHeight = images[0].clientHeight;
+        console.log("Picture: " + images.length);
+
+        slider.style.transform = `translateY(${15}px)`;
         
     }else if(images.length == 0){
         active.style.display = "none";
