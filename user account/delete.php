@@ -80,21 +80,21 @@ if (isset($_SESSION["sessionId"])) {
       </div>
       <div class="grid-container">
         <div class="grid">
-          <form action="includes/password.php" class="password-form" method="POST">
+          <form action="includes/delete.php" class="password-form" method="POST">
             <div class="form-group">
               <p>Password</p>
-              <input type="password" name="cOldPassword" value="" readonly/>
+              <input type="password" name="password" value="" readonly/>
             </div>
             <div class="btn-container" class="btn-container-pass">
               <button type="button" name="submit" id="btn-edit">I understand</button>
               <button
                 type="submit"
-                name = "changePass"
+                name = "delete"
                 style="display: none"
                 id="btn-save-changes"
 
               >
-                Save Changes
+                Delete Account
               </button>
               <button
                 type="button"

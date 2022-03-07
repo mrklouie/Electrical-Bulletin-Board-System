@@ -420,6 +420,10 @@
     padding: 1rem;
   }
 
+  .alert .subtext {
+    white-space: pre-wrap;
+  }
+
   .user-info {
     overflow-x: hidden;
   }
@@ -442,6 +446,16 @@
     padding: 1rem;
   }
 
+  .password-form {
+    gap: 2rem;
+  }
+
+  .alert .subtext {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
   .user-info {
     overflow-x: hidden;
     overflow-y: auto;
@@ -449,6 +463,10 @@
 
   .grid .user-form {
     grid-template-columns: 1fr;
+  }
+
+  #btn-edit {
+    margin-bottom: 5rem;
   }
 
   .btn-container button {

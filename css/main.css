@@ -625,3 +625,13 @@ li i {
     margin-top: 20%;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .left-section {
+    margin-top: 9rem;
+    height: 75vh;
+  }
+
+  .logout-btn {
+  }
+}
