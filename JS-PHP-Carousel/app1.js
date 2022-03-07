@@ -55,34 +55,34 @@ var hadModal;
 var key;
 
 // ------POP UP MODAL-------//
-const submitModal = document.getElementById("submit-modal");
-const closePopModal = document.querySelector(".close-popup-modal");
-submitModal.addEventListener("click", ()=>{
-    const email = document.querySelector(".email");
-    if(email.value !== ""){
-        localStorage.setItem("ifSeen", true);
-        console.log("submitted");
-    }else{
-        console.log("walang laman");
-    }
+// const submitModal = document.getElementById("submit-modal");
+// const closePopModal = document.querySelector(".close-popup-modal");
+// submitModal.addEventListener("click", ()=>{
+//     const email = document.querySelector(".email");
+//     if(email.value !== ""){
+//         localStorage.setItem("ifSeen", true);
+//         console.log("submitted");
+//     }else{
+//         console.log("walang laman");
+//     }
 
-    popModal.classList.remove("activee");
-    overlay.classList.remove("activee");
-})
-localStorage.clear();
-key = localStorage.getItem("ifSeen");
-if(!key){
-    setTimeout(()=>{
-        popModal.classList.add("activee");
-        overlay.classList.add("activee");
-    }, 3000);
+//     popModal.classList.remove("activee");
+//     overlay.classList.remove("activee");
+// })
+// localStorage.clear();
+// key = localStorage.getItem("ifSeen");
+// if(!key){
+//     setTimeout(()=>{
+//         popModal.classList.add("activee");
+//         overlay.classList.add("activee");
+//     }, 3000);
     
-}
+// }
 
-closePopModal.addEventListener("click", ()=>{
-    popModal.classList.remove("activee");
-    overlay.classList.remove("activee");
-})
+// closePopModal.addEventListener("click", ()=>{
+//     popModal.classList.remove("activee");
+//     overlay.classList.remove("activee");
+// })
 
 
 
@@ -134,6 +134,7 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
             closeModal(modal);
         })
     })
+
     openModalBtn.forEach(buttons =>{
         buttons.addEventListener("click", ()=>{
             const modal = document.querySelector(buttons.dataset.openModal);
@@ -186,7 +187,16 @@ function mobileView(){
         location.reload();
     }else if(window.innerWidth <= 768){
 
-        if(images.length == 2){
+      if(images.length == 1){
+            slider.style.transform = `translateX(${-6}px)`;
+            console.log("Image is one and mobile view");
+            const arrowRight = document.getElementById("next-image");
+            const arrowLeft = document.getElementById("prev-image");
+
+            arrowRight.style.display = "none";
+            arrowLeft.style.display = "none";
+        }
+        else if(images.length == 2){
             console.log("Images is equal to 2");
             firstCloneImage = images[0].cloneNode(true);
             lastCloneImage = images[images.length -1].cloneNode(true);
@@ -963,15 +973,13 @@ if(window.innerWidth <= 768){
 
         slider.style.transform = `translateY(${15}px)`;
         
+      
+        
     }else if(images.length == 0){
         active.style.display = "none";
         nextSlide.style.display = "none";
         prevSlide.style.display = "none";
     }
-
-
-
-
 
 }
 

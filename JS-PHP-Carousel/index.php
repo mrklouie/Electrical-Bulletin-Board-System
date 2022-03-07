@@ -29,7 +29,10 @@ if (isset($_SESSION["sessionUsername"])) {
   <body>
     <div class="container-fluid" >
       <nav class="mobile-nav">
-        <p class="user">Mark Louie</p>
+        <a href="../user account/index.php">
+        <p class="user"><?php if (isset($_SESSION["sessionUsername"])) {
+    echo $_SESSION["sessionUsername"];
+}?></p></a>
         <ul>
 
           <?php if (isset($_SESSION["sessionUsername"])) {
@@ -59,9 +62,10 @@ if (isset($_SESSION["sessionUsername"])) {
       <div class="section left-section">
         <nav>
           <div class="user">
+            <a href="../user account/index.php">
             <p><?php
 
-echo $user ?></p>
+echo $user ?></p></a>
           </div>
           <ul>
             <li><a href="../index.php">Manage</a></li>

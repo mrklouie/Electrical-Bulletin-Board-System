@@ -21,21 +21,21 @@
       </div>
       <ul class="nav-list">
         <li id="li-user">
-          <a href="index.html">
+          <a href="index.php">
             <i class="fa-solid fa-user-astronaut"></i>
             <span class="links-name">User Info</span>
           </a>
           <span class="tooltip">User Info</span>
         </li>
         <li id="li-home">
-          <a href="#">
+          <a href="../JS-PHP-Carousel/index.php">
             <i class="fa-solid fa-house-chimney-window"></i>
             <span class="links-name">Back to Home</span>
           </a>
           <span class="tooltip">Home</span>
         </li>
         <li id="li-change-pass">
-          <a href="changePass.html">
+          <a href="changePass.php">
             <i class="fa-solid fa-key"></i>
             <span class="links-name">Change Password</span>
           </a>

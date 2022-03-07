@@ -9,6 +9,42 @@ const btnCancel = document.getElementById("btn-cancel");
 const listUser = document.getElementById("li-user");
 const listChangePass = document.getElementById("li-change-pass");
 
+const openModalBtn = document.querySelectorAll("[data-open-modal]");
+const closeModalBtn = document.querySelectorAll("[data-close-modal]");
+const overlay = document.getElementById("overlay");
+
+
+overlay.addEventListener("click", ()=>{
+    const modal = document.querySelector(".my-modal.activee");
+    closeModal(modal);
+})
+
+openModalBtn.forEach(button =>{
+    button.addEventListener("click", ()=>{
+        const modal = document.querySelector(button.dataset.openModal);
+        
+        openModal(modal);
+    })
+})
+closeModalBtn.forEach(button =>{
+    button.addEventListener("click", ()=>{
+        const modal = button.closest(".my-modal");
+        closeModal(modal);
+    })
+})
+
+function openModal(modal){
+    modal.classList.add("activee");
+    overlay.classList.add("activee");
+}
+
+function closeModal(modal){
+    modal.classList.remove("activee");
+    overlay.classList.remove("activee");
+}
+
+
+
 
 // ------ TWO MAIN CONTENTS ------  //
 const userInfoContent = document.querySelector(".user-info");
@@ -66,8 +102,8 @@ userInfoContent.addEventListener("click", ()=>{
         sideBar.classList.toggle("activee");
     }
 })
-changePassContent.addEventListener("click", ()=>{
-    if(sideBar.classList.contains("activee")){
-        sideBar.classList.toggle("activee");
-    }
-})
+// changePassContent.addEventListener("click", ()=>{
+//     if(sideBar.classList.contains("activee")){
+//         sideBar.classList.toggle("activee");
+//     }
+// })
