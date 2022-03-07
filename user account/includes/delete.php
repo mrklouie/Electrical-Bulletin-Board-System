@@ -17,7 +17,7 @@ if (isset($_POST["delete"])) {
                 $sql = "DELETE FROM users WHERE id = $id";
                 if (mysqli_query($conn4, $sql)) {
                     session_destroy();
-                    header("Location: ../../../../JS-PHP-Carousel/index.php");
+                    header("Location: ../deleted.php?AccountDeleted");
                     exit;
                 }
 

@@ -32,6 +32,8 @@ if (isset($_SESSION["sessionUsername"])) {
         <a href="../user account/index.php">
         <p class="user"><?php if (isset($_SESSION["sessionUsername"])) {
     echo $_SESSION["sessionUsername"];
+} else {
+    echo "Guest";
 }?></p></a>
         <ul>
 
@@ -68,7 +70,15 @@ if (isset($_SESSION["sessionUsername"])) {
 echo $user ?></p></a>
           </div>
           <ul>
-            <li><a href="../index.php">Manage</a></li>
+            <li><a href="../index.php">
+            <?php
+if (isset($_SESSION["sessionId"])) {
+    echo "Manage";
+} else {
+    echo "";
+}
+?>
+            </a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </nav>

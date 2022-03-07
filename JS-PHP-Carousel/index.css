@@ -749,3 +749,8 @@ button:hover {
     margin-right: 1rem;
   }
 }
+@media screen and (max-width: 375px) {
+  .comment-section-container {
+    margin-top: -3rem;
+  }
+}
