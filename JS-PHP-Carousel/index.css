@@ -50,10 +50,6 @@ body {
   z-index: 2;
 }
 
-.section {
-  /* transform: translateY(-20%); */
-}
-
 .left-section {
   position: relative;
   text-align: left;
@@ -190,9 +186,6 @@ a {
   margin: 0;
 }
 
-.slide-number:first-child {
-}
-
 .active {
   position: absolute;
   width: 2rem;
@@ -305,17 +298,12 @@ button:hover {
   border: 1px solid var(--citcs);
 }
 
-/* pop-up modal */
-
 .pop-modal.activee {
   transform: translate(-50%, -50%) scale(1);
 }
 
 .pop-modal-title {
   font-weight: bold;
-}
-
-.section-modal {
 }
 
 .left-modal {
@@ -584,6 +572,12 @@ button:hover {
 
 .go-to {
   color: blue !important;
+}
+
+@media screen and (max-width: 1600px) and (max-height: 900px) {
+  .icons {
+    bottom: 35%;
+  }
 }
 
 @media screen and (max-width: 768px) {

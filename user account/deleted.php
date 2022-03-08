@@ -60,6 +60,7 @@
         border: 3px solid var(--citcs);
         text-transform: uppercase;
         font-size: 1.2rem;
+        font-weight: 500;
         cursor: pointer;
         transition: background-color 0.3s ease, color 0.3s ease;
       }

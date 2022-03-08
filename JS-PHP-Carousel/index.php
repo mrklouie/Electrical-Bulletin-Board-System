@@ -101,11 +101,11 @@ if ($rowsCount >
         <div class="icons">
           <div class="icon">
             <a href="https://www.plmun.edu.ph/"
-              ><i class="fa fa-globe" style="font-size: 40px"></i
+            target="_blank"><i class="fa fa-globe" style="font-size: 40px"></i
             ></a>
           </div>
           <div class="icon">
-            <a href="https://www.facebook.com/plmunofficial/">
+            <a href="https://www.facebook.com/plmunofficial/" target="_blank">
               <i class="fa fa-facebook-square" style="font-size: 40px"></i
             ></a>
           </div>
