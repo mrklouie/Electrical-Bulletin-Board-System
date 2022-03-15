@@ -12,6 +12,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+.forgot-pass {
+  margin-top: 1rem;
+}
+
 .left .heading {
   z-index: 1;
   position: relative;

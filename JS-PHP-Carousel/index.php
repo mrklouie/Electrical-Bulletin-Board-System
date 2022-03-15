@@ -6,6 +6,7 @@ $user = "Guest";
 if (isset($_SESSION["sessionUsername"])) {
     $user = $_SESSION["sessionUsername"];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -207,7 +208,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     </div>
                 <textarea readonly class="user-comment" name="user-comment"><?php echo $row["message"] ?></textarea>
 
-                <?php if ($user == $row["username"]) {?>
+                <?php if ($user == $row["username"] || isset($_SESSION["sessionUserType"])) {?>
                 <button class="delete-comment" type="delete-comment" name="delete-comment">&times;</button>
                 <button class="update-comment" type="button"><i class="fa fa-pencil"></i></i></button>
                 <button class="save-changes-comment" type="submit" name="submit-changes"><i class="fa fa-check"></i></button>

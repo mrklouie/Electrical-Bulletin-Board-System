@@ -249,7 +249,7 @@ button:hover {
   transform: translate(-50%, -50%) scale(0);
   transition: transform 200ms ease-in-out;
   background-color: white;
-  border: 1px solid var(--citcs);
+  /* border: 1px solid var(--citcs); */
   padding: 1rem;
   width: 800px;
   max-width: 80%;
@@ -263,7 +263,7 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--citcs);
+  /* border-bottom: 1px solid var(--citcs); */
   margin-bottom: 1rem;
 }
 
@@ -295,7 +295,6 @@ button:hover {
 }
 
 .modal-container {
-  border: 1px solid var(--citcs);
 }
 
 .pop-modal.activee {
@@ -527,6 +526,7 @@ button:hover {
 .update-comment {
   position: absolute;
   right: -3.5rem;
+  top: 3rem;
   background: none;
   border-style: none;
   font-size: 0.9rem;

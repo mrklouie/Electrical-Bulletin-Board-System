@@ -85,11 +85,6 @@ var key;
 // })
 
 
-
-
-
-
-
 window.addEventListener("resize", ()=>{
     var sizeWidth = images[0].clientWidth + 40;
     if(window.innerWidth <= 768){

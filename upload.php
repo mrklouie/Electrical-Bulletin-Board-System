@@ -76,11 +76,6 @@ if (isset($_POST["upload"])) {
                         $result = mysqli_query($conn2, $sql);
                         $rowsCount = mysqli_num_rows($result);
 
-                        $sql = "CREATE TABLE table{$rowsCount} ( "
-                            . "cid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,"
-                            . "message TEXT NOT NULL"
-                            . ")";
-
                         $result = mysqli_query($conn2, $sql);
 
                         $_SESSION["success"] = "Uploaded to the database";

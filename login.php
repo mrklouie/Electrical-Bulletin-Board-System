@@ -56,6 +56,7 @@ session_start();
               />
             </div>
             <button type="submit" name="login">Login</button>
+            <a href="reset-req.php" class="forgot-pass">Forgot Password?</a>
             <div class="sign-up-section">
               <a href="register.php">Sign up here</a>
             </div>

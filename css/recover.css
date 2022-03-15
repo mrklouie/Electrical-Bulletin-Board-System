@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;500;700;800&display=swap");
+:root {
+  --citcs: #cc2a49;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.go-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none !important;
+  color: black !important;
+  font-size: 25px;
+}
+
+.alert small {
+  color: red;
+  font-weight: 500;
+}
+
+body::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.3;
+  background-image: url("../images/blob.svg");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.container {
+  position: relative;
+  background-color: white;
+  width: 900px;
+  max-width: 90%;
+  height: 60%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; */
+  text-align: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.wrapper {
+  height: 100%;
+  width: 100%;
+  margin-top: 10%;
+}
+.wrapper .body {
+  margin-top: 1rem;
+}
+
+.wrapper button {
+  color: white;
+  background-color: var(--citcs);
+  border-style: none;
+  outline: none;
+  padding: 0.63rem 2rem;
+  cursor: pointer;
+  margin-left: -5px;
+}
+.wrapper input {
+  width: 15rem;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+.wrapper input::placeholder {
+  color: #9e9a9a;
+  transition: color 0.3s ease;
+}
+.wrapper input:focus::placeholder {
+  color: transparent;
+}
+
+.container .header img {
+  width: 180px;
+}
+.container .header .search {
+  width: 180px;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 375px) {
+  body::before {
+    background-size: 210%;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: 80%;
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+
+  .wrapper {
+    margin-top: 0;
+  }
+}

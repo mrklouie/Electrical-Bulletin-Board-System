@@ -4,7 +4,7 @@ session_start();
 
 ?>
 
-<?php if (isset($_SESSION["sessionId"])) {?>
+<?php if (isset($_SESSION["sessionUserType"])) {?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -241,5 +241,6 @@ session_start();
   </body>
 </html>
 <?php } else {
-    echo "<script>alert('Whoops! bawal yan ')</script>";
+    header("Location: JS-PHP-Carousel/index.php");
+    exit;
 }?>

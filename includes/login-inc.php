@@ -31,6 +31,9 @@ if (isset($_POST["login"])) {
                     header("Location: ../login.php?error");
                     exit;
                 } else {
+                    if ($row["usertype"] == "admin") {
+                        $_SESSION["sessionUserType"] = $row["usertype"];
+                    }
                     $_SESSION["sessionId"] = $row["id"];
                     $_SESSION["sessionUsername"] = $row["username"];
                     $_SESSION["sessionEmail"] = $row["email"];
