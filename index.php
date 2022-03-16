@@ -64,14 +64,18 @@ session_start();
               <h4 class="name">
                 <?php echo $_SESSION["sessionFname"] . " " . $_SESSION["sessionLname"] ?>
               </h4>
-              <p class="subtext">Admin Member</p>
+              <p class="subtext">Admin</p>
             </div>
             <div class="left-item account-details">
               <h4 class="left-item-title">Account Details:</h4>
               <ul>
                 <li class="subtext">Username: <?php echo $_SESSION["sessionUsername"] ?></li>
                 <li class="subtext" style="word-break: break-all">
-                  Email: <?php echo $_SESSION["sessionEmail"]; ?>
+                  Email: <?php if (isset($_SESSION["email"])) {
+    echo $_SESSION["email"];
+} else {
+    echo "none";
+}?>
                 </li>
               </ul>
             </div>

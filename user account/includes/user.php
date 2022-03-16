@@ -7,7 +7,7 @@ if (isset($_POST["save"])) {
     $confirmPassword = $_POST["confirmPassword"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
-    $email = $_POST["email"];
+
     $username = $_POST["username"];
     $id = $_SESSION["sessionId"];
     if (!empty($password) && !empty($confirmPassword)) {
@@ -26,18 +26,32 @@ if (isset($_POST["save"])) {
                     header("Location: ../index.php?error=Incorrectpassword");
                     exit;
                 } else {
-                    $sql = "UPDATE users
-                    SET username = '" . $username . "',
-                    email = '" . $email . "',
-                    fname = '" . $fname . "',
-                    lname = '" . $lname . "'
-                    WHERE id = '" . $id . "'";
+                    $sql = "SELECT username FROM users WHERE username = '" . $username . "'";
                     $result = mysqli_query($conn4, $sql);
-                    if ($result) {
-                        header("Location: ../index.php?Success");
-                        exit;
+                    $rowsCount = mysqli_num_rows($result);
+                    if ($rowsCount > 0) {
+                        $sql = "UPDATE users
+                        SET  fname = '" . $fname . "',
+                        lname = '" . $lname . "'
+                        WHERE id = '" . $id . "'";
+                        $result = mysqli_query($conn4, $sql);
+                        if ($result) {
+                            $_SESSION["userAccount"] = "Username Already Exist";
+                            header("Location: ../index.php?UsernameAlreadyExist");
+                            exit;
+                        }
+                    } else {
+                        $sql = "UPDATE users
+                        SET username = '" . $username . "',
+                        fname = '" . $fname . "',
+                        lname = '" . $lname . "'
+                        WHERE id = '" . $id . "'";
+                        $result = mysqli_query($conn4, $sql);
+                        if ($result) {
+                            header("Location: ../index.php?Success");
+                            exit;
+                        }
                     }
-
                 }
             }
         }

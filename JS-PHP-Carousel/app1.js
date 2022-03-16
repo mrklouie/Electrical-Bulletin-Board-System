@@ -55,34 +55,34 @@ var hadModal;
 var key;
 
 // ------POP UP MODAL-------//
-// const submitModal = document.getElementById("submit-modal");
-// const closePopModal = document.querySelector(".close-popup-modal");
-// submitModal.addEventListener("click", ()=>{
-//     const email = document.querySelector(".email");
-//     if(email.value !== ""){
-//         localStorage.setItem("ifSeen", true);
-//         console.log("submitted");
-//     }else{
-//         console.log("walang laman");
-//     }
+const submitModal = document.getElementById("submit-modal");
+const closePopModal = document.querySelector(".close-popup-modal");
+submitModal.addEventListener("click", ()=>{
+    const email = document.querySelector(".email");
+    if(email.value !== ""){
+        localStorage.setItem("ifSeen", true);
+        console.log("submitted");
+    }else{
+        console.log("walang laman");
+    }
 
-//     popModal.classList.remove("activee");
-//     overlay.classList.remove("activee");
-// })
-// localStorage.clear();
-// key = localStorage.getItem("ifSeen");
-// if(!key){
-//     setTimeout(()=>{
-//         popModal.classList.add("activee");
-//         overlay.classList.add("activee");
-//     }, 3000);
+    popModal.classList.remove("activee");
+    overlay.classList.remove("activee");
+})
+localStorage.clear();
+key = localStorage.getItem("ifSeen");
+if(!key){
+    setTimeout(()=>{
+        popModal.classList.add("activee");
+        overlay.classList.add("activee");
+    }, 10000);
     
-// }
+}
 
-// closePopModal.addEventListener("click", ()=>{
-//     popModal.classList.remove("activee");
-//     overlay.classList.remove("activee");
-// })
+closePopModal.addEventListener("click", ()=>{
+    popModal.classList.remove("activee");
+    overlay.classList.remove("activee");
+})
 
 
 window.addEventListener("resize", ()=>{

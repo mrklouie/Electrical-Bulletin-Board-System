@@ -24,6 +24,9 @@ if (isset($_SESSION["token"])) {
             >A verification code has been sent to your email. This code will be
             valid for 5 minutes only.</small
           >
+          <div class="timer">
+              <p id="timer"></p>
+          </div>
           <div class="alert">
               <?php if (isset($_SESSION["tokenError"])) {?>
               <small><?php echo $_SESSION["tokenError"]; ?></small>
@@ -38,6 +41,7 @@ if (isset($_SESSION["token"])) {
         </div>
       </div>
     </div>
+    <script src="recover.js"></script>
   </body>
 </html>
 <?php }?>

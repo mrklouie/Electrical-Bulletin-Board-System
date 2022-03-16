@@ -45,6 +45,7 @@ if (isset($_SESSION["sessionUsername"])) {
           <li><a href="#">Contact</a> </li>
         </ul>
       </nav>
+
       <!-- START MODAL -->
       <div class="pop-modal" id="pop-modal">
         <div class="section-modal left-modal">
@@ -53,15 +54,20 @@ if (isset($_SESSION["sessionUsername"])) {
           <div class="subhead">
           <h2 class="pop-modal-title">SUBSCRIBE</h2>
           <p class="pop-modal-subtext">Don't miss out any upcoming news in the futue so you won't be left behind!</p>
+          <form action="subscribe.php" method="POST">
+          <input type="hidden" name="id" value="<?php echo $_SESSION["sessionId"]; ?>">
           <input type="email" name="email" class="email" placeholder="Enter your email here">
+
           </div>
-          <button id="submit-modal">SUBMIT</button>
+          <button type="submit" id="submit-modal" name="subscribe">SUBMIT</button>
+          </form>
         </div>
         <div class="section-modal right-modal">
 
         </div>
       </div>
       <!-- END MODAL -->
+
       <div class="section left-section">
         <nav>
           <div class="user">

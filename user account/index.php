@@ -80,6 +80,9 @@ $id = $_SESSION["sessionId"];
         ?>
     <div class="user-info">
       <h2 class="user"><?php echo $row["fname"] . " " . $row["lname"]; ?></h2>
+      <?php if (isset($_SESSION["userAccount"])) {?>
+      <p class="alert"><?php echo $_SESSION["userAccount"]; ?></p>
+        <?php unset($_SESSION["userAccount"]);}?>
       <div class="grid-container">
         <div class="grid">
           <form action="includes/user.php" method="POST" class="user-form" >
@@ -91,16 +94,7 @@ $id = $_SESSION["sessionId"];
               <p>Last Name</p>
               <input type="text" name="lname" value="<?php echo $row["lname"]; ?>" readonly />
             </div>
-            <div class="form-group">
-              <p>Email Address</p>
-              <input
-                type="email"
-                name="email"
-                value="<?php echo $row["email"]; ?>"
-                placeholder="Optional"
-                readonly
-              />
-            </div>
+
             <div class="form-group">
               <p>Username</p>
               <input type="text" name="username" value="<?php echo $row["username"]; ?>" readonly />

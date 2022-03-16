@@ -28,6 +28,7 @@ if (isset($_POST["password-reset"])) {
                     if ($sent) {
                         $startTime = $_SERVER["REQUEST_TIME"];
                         $_SESSION["time"] = $startTime;
+                        $_SESSION["email"] = $row["email"];
                         header("Location: recover.php");
                         exit;
                     } else {
@@ -57,16 +58,15 @@ if (isset($_POST["password-reset"])) {
     $endTime = $_SERVER["REQUEST_TIME"];
     if (!empty($code)) {
         if (isset($_SESSION["token"]) && isset($_SESSION["time"])) {
-            if ($_SESSION["token"] === $code) {
-                if (($endTime - $_SESSION["time"]) > 300) {
-                    unset($_SESSION["token"]);
-                    unset($_SESSION["time"]);
-                    $_SESSION["tokenError"] = "Code expired. Please Try again!";
-                    header("Location: recover.php");
-                    exit;
-                } else {
-                    echo "Time duration: " . $endTime - $_SESSION["time"] . "s";
-                }
+            if (($endTime - $_SESSION["time"]) > 300) {
+                $_SESSION["tokenError"] = "Code expired. Please Try again!";
+                unset($_SESSION["token"]);
+                unset($_SESSION["time"]);
+                header("Location: recover.php");
+                exit;
+            } else if ($_SESSION["token"] === $code) {
+                header("Location: reset-account.php");
+                exit;
             } else {
                 $_SESSION["tokenError"] = "Code does not exist";
                 header("Location: recover.php");
@@ -77,7 +77,6 @@ if (isset($_POST["password-reset"])) {
             header("Location: recover.php");
             exit;
         }
-
     } else {
         $_SESSION["tokenError"] = "Please enter the code";
         header("Location: recover.php");

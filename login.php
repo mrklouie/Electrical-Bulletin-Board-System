@@ -45,6 +45,7 @@ session_start();
                 name="username"
                 placeholder="Enter username"
                 autocomplete="off"
+                maxlength = "8"
               />
             </div>
             <div class="form-group">

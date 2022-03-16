@@ -30,7 +30,7 @@ session_start();
           </div>
         <div class="body">
           <form action="reset.php" method="POST">
-            <input type="email" name="email" placeholder="example@yahoo.com" />
+            <input type="email" name="email" placeholder="example@yahoo.com" class="email"/>
             <button type="submit" name="password-reset">Find</button>
           </form>
 
