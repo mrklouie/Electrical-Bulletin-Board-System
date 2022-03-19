@@ -6,7 +6,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 $confirmPassword = $_POST["confirm-password"];
 if (isset($_POST["submit"])) {
-    echo "Id: " . $id . "<br>Username: " . $username . "<br>Password: " . $password . "<br>Confirm Password: " . $confirmPassword;
+    // echo "Id: " . $id . "<br>Username: " . $username . "<br>Password: " . $password . "<br>Confirm Password: " . $confirmPassword;
 
     if (!empty($username) && !empty($password) && !empty($confirmPassword)) {
         if ($password === $confirmPassword) {
@@ -33,8 +33,7 @@ if (isset($_POST["submit"])) {
                         $hashedPass = password_hash($password, PASSWORD_DEFAULT);
                         mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPass, $id);
                         mysqli_stmt_execute($stmt);
-                        unset($_SESSION["token"]);
-                        echo "Changed Success!";
+                        header("Location: ../account-reset-success.php");
                         exit;
                     }
                 }

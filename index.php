@@ -13,6 +13,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
@@ -74,7 +75,7 @@ session_start();
                   Email: <?php if (isset($_SESSION["email"])) {
     echo $_SESSION["email"];
 } else {
-    echo "none";
+    echo "[none]";
 }?>
                 </li>
               </ul>
@@ -96,7 +97,7 @@ session_start();
           <form action="JS-PHP-Carousel/index.php">
           <div class="logout-container">
             <div class="logout">
-              <button class="logout-btn">SHOW IMAGES</button>
+              <button class="logout-btn">SHOW ANNOUNCEMENTS</button>
             </div>
           </div>
           </form>
@@ -216,7 +217,7 @@ session_start();
               <div class="card card-extra">
                 <form action="delete.php" method="POST">
                   <input type="hidden" name="id" value="<?php echo $row["id"] ?>">
-                  <button type="submit" class="remove" name="delete">&#10006;</button>
+                  <button type="submit" class="remove" name="delete"><i class="fa-solid fa-box-archive" id="archive"></i></button>
                 </form>
                 <img src="uploads/<?php echo $row['images'] ?>" />
                 <!-- <img src="/images/kokey.jpg" /> -->
@@ -230,7 +231,7 @@ session_start();
         </div>
       </div>
     </div>
-
+    <script src="https://kit.fontawesome.com/8d98474fa5.js" crossorigin="anonymous"></script>
     <script src="app.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

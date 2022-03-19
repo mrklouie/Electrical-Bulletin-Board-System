@@ -33,6 +33,8 @@ closeModalBtn.forEach(button =>{
     })
 })
 
+
+
 function openModal(modal){
     modal.classList.add("activee");
     overlay.classList.add("activee");
@@ -92,14 +94,48 @@ btnLogoutContainer.addEventListener("click", ()=>{
   
 })
 
+// menu.addEventListener("click", ()=>{
+//     sideBar.classList.toggle("activee");
+// })
+
+
+
+// menu.addEventListener("click", ()=>{
+//     sideBar.classList.add("activee");
+//     sideBar.style.transisionDelay = "0.3s";
+// })
+const linksName = document.querySelectorAll(".links-name");
+
 menu.addEventListener("click", ()=>{
-    sideBar.classList.toggle("activee");
+    if(sideBar.classList.contains("activee")){
+        sideBar.classList.remove("activee");
+        linksName.forEach(link =>{
+            link.style.opacity = "0";
+            link.style.transition = "none";
+
+        })
+        
+    }else{
+        sideBar.classList.add("activee");
+        linksName.forEach(link =>{
+            link.style.opacity = "1";
+            link.style.transition = "opacity 0.3s ease 0.2s";
+        });
+   
+        
+    }
 })
+
 
 
 userInfoContent.addEventListener("click", ()=>{
     if(sideBar.classList.contains("activee")){
-        sideBar.classList.toggle("activee");
+        linksName.forEach(link =>{
+            link.style.opacity = "0";
+            link.style.transition = "none";
+
+        })
+        sideBar.classList.remove("activee");
     }
 })
 // changePassContent.addEventListener("click", ()=>{
