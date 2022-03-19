@@ -34,7 +34,7 @@ if (isset($_SESSION["sessionUsername"])) {
         <p class="user"><?php if (isset($_SESSION["sessionUsername"])) {
     echo $_SESSION["sessionUsername"];
 } else {
-    echo "Guest";
+    echo "<a href='../login.php'>Login</a>";
 }?></p></a>
         <ul>
 
@@ -55,7 +55,13 @@ if (isset($_SESSION["sessionUsername"])) {
           <h2 class="pop-modal-title">SUBSCRIBE</h2>
           <p class="pop-modal-subtext">Don't miss out any upcoming news in the futue so you won't be left behind!</p>
           <form action="subscribe.php" method="POST">
-          <input type="hidden" name="id" value="<?php echo $_SESSION["sessionId"]; ?>">
+          <input type="hidden" name="id" value="<?php
+if (isset($_SESSION["sessionId"])) {
+    echo $_SESSION["sessionId"];
+} else {
+    "";
+}?>">
+
           <input type="email" name="email" class="email" placeholder="Enter your email here">
 
           </div>
@@ -72,9 +78,11 @@ if (isset($_SESSION["sessionUsername"])) {
         <nav>
           <div class="user">
             <a href="../user account/index.php">
-            <p><?php
+            <p><?php if (isset($_SESSION["sessionId"])) {
+    echo $user;} else {
+    echo "<a href='../login.php'>Login</a>";
+}?></p></a>
 
-echo $user ?></p></a>
           </div>
           <ul>
             <li><a href="../index.php">

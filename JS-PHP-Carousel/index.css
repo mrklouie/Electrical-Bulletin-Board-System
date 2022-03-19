@@ -506,10 +506,13 @@ button:hover {
   }
 
   .mobile-nav {
-    margin-left: -2rem;
-    z-index: 2;
+    /* outline: 1px solid black; */
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .mobile-nav p {
+    transform: translate(-200%, 5%);
   }
 
   .button-control {
