@@ -85,6 +85,44 @@ closePopModal.addEventListener("click", ()=>{
 })
 
 
+
+// CONTACT FORM
+const openContact = document.querySelectorAll("[data-open-contact]");
+const closeContact = document.querySelectorAll("[data-close-contact]");
+
+
+const openContactForm =(openForm)=>{
+    if(openForm == null) return
+    openForm.classList.add("activee");
+    overlay.classList.add("activee");
+}
+
+const closeContactForm = (closeForm)=>{
+    closeForm.classList.remove("activee");
+    overlay.classList.remove("activee");
+}
+
+
+
+
+
+closeContact.forEach(buttons =>{
+    buttons.addEventListener("click", ()=>{
+        const closeForm = buttons.closest(".contact-form");
+        closeContactForm(closeForm);
+    })
+})
+
+
+openContact.forEach(buttons =>{
+    buttons.addEventListener("click", ()=>{
+        const openForm = document.querySelector(buttons.dataset.openContact);
+        console.log(openForm);
+        openContactForm(openForm);
+    })
+})
+
+
 window.addEventListener("resize", ()=>{
     var sizeWidth = images[0].clientWidth + 40;
     if(window.innerWidth <= 768){
@@ -114,21 +152,13 @@ function OnInput() {
 }
 
 
-overlay.addEventListener("click", ()=>{
-    overlay.classList.remove("activee");
-    popModal.classList.remove("activee");
-})
+
 
 
 console.log("Images length: " + images.length + "\nDetails Length: " + details.length + "\nModals Length: " + modals.length);
 if(openModalBtn.length == 1 && closeModalBtn.length == 1){  
     
-    overlay.addEventListener("click", ()=>{
-        const modals = document.querySelectorAll(".my-modal.activee");
-        modals.forEach(modal =>{
-            closeModal(modal);
-        })
-    })
+   
 
     openModalBtn.forEach(buttons =>{
         buttons.addEventListener("click", ()=>{
@@ -152,7 +182,7 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
     }
 }
 
-let interval = 5000;
+let interval = 3000;
 var firstCloneDetails;
 var LastCloneImages;
 var extraCloneImages1;
@@ -304,10 +334,6 @@ function mobileView(){
         })
 
 
-        overlay.addEventListener("click", ()=>{
-            modals[whichModal].classList.remove("activee");
-            overlay.classList.remove("activee");
-        })
         
         // openModalBtn.forEach((buttons, index)=>{
         //     buttons.addEventListener("click", ()=>{
@@ -417,12 +443,6 @@ if(window.innerWidth <= 768){
         console.log("Images length: " + images.length + "\nDetails Length: " + details.length);
         console.log("Modals length: " + modals.length + "\nOpen Buttons length: " + openModalBtn.length + "\nClose Buttons length: " + closeModalBtn.length);
 
-        overlay.addEventListener("click", ()=>{
-            modals[whichModal].classList.remove("activee");
-            overlay.classList.remove("activee");
-           
-           
-        })
 
         openModalBtn.forEach((buttons, index)=>{
             buttons.addEventListener("click", ()=>{
@@ -538,10 +558,7 @@ if(window.innerWidth <= 768){
             clearInterval(autoPlayInterval);
         })
 
-        overlay.addEventListener("click", ()=>{
-            autoPlay();
-        })
-
+        
         slider.addEventListener("mouseleave", ()=>{
             if(!modals[counterImages].classList.contains("activee")){
                 autoPlay();
@@ -619,14 +636,7 @@ if(window.innerWidth <= 768){
         //FUNCTIONS SA MODALS
 
 
-        overlay.addEventListener("click", ()=>{
-            modals[whichModal].classList.remove("activee");
-            overlay.classList.remove("activee");
-            autoPlayImage2();
-            autoPlayText2();
-           
-        })
-
+       
         openModalBtn.forEach((buttons, index)=>{
             buttons.addEventListener("click", ()=>{
                 whichModal = index;
@@ -819,12 +829,7 @@ if(window.innerWidth <= 768){
             })
         })
 
-        overlay.addEventListener("click", ()=>{
-            modals[whichModal].classList.remove("activee");
-            overlay.classList.remove("activee");
-           
-           
-        })
+      
 
         openModalBtn.forEach((buttons, index)=>{
             buttons.addEventListener("click", ()=>{
@@ -944,10 +949,7 @@ if(window.innerWidth <= 768){
             clearInterval(autoPlayInterval);
         })
         
-        overlay.addEventListener("click", ()=>{
-            autoPlay();
-        })
-
+      
         slider.addEventListener("mouseleave", ()=>{
         if(!modals[counterImages].classList.contains("activee")){
             autoPlay();

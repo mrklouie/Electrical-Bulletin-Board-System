@@ -34,5 +34,23 @@ if (isset($_POST["delete"])) {
             exit;
         }
     }
+} else if (isset($_POST["delete-archive"])) {
+    $sql = "SELECT images FROM tbl_archives WHERE archives_id =" . $_POST["archives_id"];
+    $result = mysqli_query($conn2, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        $sql = "DELETE FROM tbl_archives WHERE archives_id =" . $_POST["archives_id"];
+        if (mysqli_query($conn2, $sql)) {
+            if (!unlink("uploads/" . $row["images"])) {
+                header("Location: archives.php?Error=unlink failed");
+                exit;
+            } else {
+                header("Location: archives.php?Success=Deleted");
+                exit;
+            }
+        } else {
+            header("Location: archives.php?Error=Delete failed");
+            exit;
+        }
+    }
 
 }

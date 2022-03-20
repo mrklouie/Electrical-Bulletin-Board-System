@@ -42,7 +42,7 @@ if (isset($_SESSION["sessionUsername"])) {
     ?>
           <li><a href="../index.php">Manage</a></li>
           <?php }?>
-          <li><a href="#">Contact</a> </li>
+          <li id="openContact">Contact</li>
         </ul>
       </nav>
 
@@ -74,6 +74,34 @@ if (isset($_SESSION["sessionId"])) {
       </div>
       <!-- END MODAL -->
 
+      <!-- Start Contact form -->
+      <div class="contact-form" id="contact-form">
+      <div class="close-form" data-close-contact>&times;</div>
+        <div class="header">
+          <div class="title">Get in touch</div>
+        </div>
+        <div class="body">
+           <form action="send-contact.php" method="POST">
+              <div class="form-group">
+                <?php
+
+$sql = "SELECT * FROM users WHERE username = '" . $user . "'";
+$result = mysqli_query($conn4, $sql);
+if ($row = mysqli_fetch_assoc($result)) {
+    ?>
+                <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s"); ?>">
+                <input type="text" name="name" value="<?php echo $row["fname"] . " " . $row["lname"]; ?>">
+                <input type="email" name="email" value="<?php echo $row["email"]; ?>">
+                <textarea name="message" id="message" placeholder="Enter message here"></textarea>
+                <?php }?>
+                <button class="send" type="submit" name="send-contact">Send  <i class="fa fa-envelope"></i></button>
+              </div>
+           </form>
+        </div>
+      </div>
+      <!-- End Contact form -->
+
+
       <div class="section left-section">
         <nav>
           <div class="user">
@@ -87,14 +115,14 @@ if (isset($_SESSION["sessionId"])) {
           <ul>
             <li><a href="../index.php">
             <?php
-if (isset($_SESSION["sessionId"])) {
+if (isset($_SESSION["sessionUserType"])) {
     echo "Manage";
 } else {
     echo "";
 }
 ?>
             </a></li>
-            <li><a href="#">Contact</a></li>
+            <li data-open-contact=#contact-form><a href="#">Contact</a></li>
           </ul>
         </nav>
         <div class="details-section">

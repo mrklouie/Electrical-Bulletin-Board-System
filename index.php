@@ -47,16 +47,25 @@ session_start();
   </head>
 
   <body>
-    <div class="includes/container-fluid">
-      <form action="includes/logout.php" method="POST">
-        <div class="logout-official">
-          <button
-            type="submit"
-            name="logout"
-            class="logout-button"
-          ></button>
-        </div>
-      </form>
+    <div class="container-fluid">
+      <!-- START NAVBAR -->
+      <div class="navbar">
+      <div class="brand-name">
+        EBBS
+      </div>
+      <a href="#" class="menu" id="menu">
+        <i class="fa-solid fa-bars hamburger"></i>
+      </a>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="archives.php">Archives</a></li>
+          <li><a href="#">Feedbacks</a></li>
+          <li><a href="index.php">Manage</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </div>
+      </div>
+      <!-- END NAVBAR -->
       <div class="parent-of-section">
         <!-- LEFT SECTION START -->
         <div class="section left-section">
@@ -104,7 +113,7 @@ session_start();
         </div>
         <!-- LEFT SECTION END -->
         <div class="section right-section">
-          <h1 class="title">Bulletin Board System</h1>
+
           <div class="container-cards">
             <!-- Modal -->
 

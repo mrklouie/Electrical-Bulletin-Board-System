@@ -421,28 +421,94 @@ button:hover {
   color: var(--citcs);
 }
 
-/* .left-modal::before {
-  position: absolute;
-  padding: 0;
-  margin: 0;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  content: "";
-  top: 0;
-  left: 0;
+/* CONTACT FORM */
+.contact-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease;
+  z-index: 3;
+  width: 900px;
+  max-width: 90%;
+  height: 500px;
+  background-color: white;
+  border: 1px solid #c4c4c4;
+  padding: 2rem;
+}
+.contact-form.activee {
+  transform: translate(-50%, -50%) scale(1);
+}
+.contact-form .body {
+  height: 100%;
+}
+.contact-form .body button {
+  padding: 1rem;
+  width: 10rem;
+  margin-top: 1rem;
+  border-style: none;
+  border: 2px solid var(--citcs);
+  background-color: white;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-transform: uppercase;
+}
+.contact-form .body button:hover {
+  background-color: var(--citcs);
+  color: white;
+}
+.contact-form .body form {
   width: 100%;
   height: 100%;
-  background-image: url(images/BLOB3-01.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  mix-blend-mode: screen;
-} */
+}
+.contact-form .body .form-group {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-/* .email::placeholder {
-  color: #222;
+.contact-form .body input,
+textarea {
+  width: 50%;
+  padding: 0.9rem;
+  background-color: #ecdede;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.contact-form .body input {
+  margin: 1rem;
+}
+.contact-form .body textarea {
+  margin: 1rem;
+}
+.contact-form .body textarea::placeholder {
   transition: color 0.3s ease;
-} */
+  color: #c4c4c4;
+}
+.contact-form .body textarea:focus::placeholder {
+  color: transparent;
+}
+
+.contact-form .header {
+  /* outline: 1px dashed #928989; */
+}
+.close-form {
+  position: absolute;
+  right: 1rem;
+  top: 0;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.contact-form .title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
 
 @media screen and (max-width: 1600px) and (max-height: 900px) {
   .icons {

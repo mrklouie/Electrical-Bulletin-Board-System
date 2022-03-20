@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;500;700;800&display=swap");
+:root {
+  --citcs: #68221f;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .title {
+  position: absolute;
+  top: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card-container {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 40px;
+  min-height: 80%;
+  width: 80%;
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.navbar {
+  position: relative;
+  height: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  z-index: 1;
+}
+
+.navbar .brand-name {
+  margin: 0 1rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.navbar .menu {
+  display: none;
+  position: absolute;
+  right: 5rem;
+  top: 1.5rem;
+}
+
+.navbar .hamburger {
+  font-size: 2rem;
+  color: black;
+}
+
+.navbar-links li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: var(--citcs);
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: white;
+
+    padding-top: 1rem !important;
+  }
+
+  .navbar .menu {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    margin: 0;
+    background-color: white;
+  }
+
+  .navbar-links.activee {
+    display: block;
+    width: 100%;
+  }
+
+  .navbar-links ul {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .navbar-links li {
+    padding: 1rem;
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid #c4c4c4;
+  }
+  .navbar-links li:hover {
+    background-color: #c4c4c4;
+  }
+  .navbar-links a {
+    text-decoration: none;
+    color: var(--citcs);
+  }
+}
+
+@media screen and (max-width: 414px) and (min-width: 375px) {
+  .navbar .menu {
+    right: 2rem;
+  }
+
+  .navbar-links {
+    background-color: white;
+  }
+}
