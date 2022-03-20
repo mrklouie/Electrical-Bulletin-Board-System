@@ -30,7 +30,7 @@ session_start();
           <li><a href="archives.php">Archives</a></li>
           <li><a href="#">Feedbacks</a></li>
           <li><a href="index.php">Manage</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="includes/logout.php">Logout</a></li>
         </ul>
       </div>
     </div>

@@ -22,7 +22,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
   padding: 1rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .navbar .brand-name {
@@ -46,6 +48,7 @@ body {
 .navbar-links li {
   display: inline-block;
   margin: 0 1rem;
+  font-size: 1.2rem;
 }
 
 .navbar-links a {
