@@ -3,7 +3,7 @@
   --tablet: 768px;
   --laptop: 992px;
   --desktop: 1200px;
-  --citcs: #cc2a49;
+  --citcs: #68221f;
 }
 * {
   box-sizing: border-box;
@@ -14,7 +14,7 @@
 }
 
 body {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .navbar {
@@ -232,11 +232,12 @@ ul {
 }
 
 .logout-btn {
+  padding: 1rem;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   border: none;
   width: 80%;
   height: 150px;

@@ -19,7 +19,7 @@ session_start();
       <div class="card-container">
         <div class="section left">
           <div class="heading"><h2>Bulletin Board System</h2></div>
-         <img src="images/citcs-wavy1.svg" class="wave" />
+         <img src="images/maroon.svg" class="wave" />
           <img
             src="images/citcs-undraw_website_builder_re_ii6e.svg"
             class="girl"

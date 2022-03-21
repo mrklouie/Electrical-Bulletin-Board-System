@@ -12,11 +12,23 @@
 body {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
+
+/* colors */
+.hamburger,
+.title,
+li,
+.brand-name,
+table {
+  color: var(--citcs) !important;
+}
+/* colors */
 
 .container {
   position: relative;
   width: 100%;
+
   height: calc(100% - 75px);
   display: flex;
   justify-content: center;
@@ -30,21 +42,11 @@ body {
   text-align: center;
 }
 
-.card-container {
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  border-radius: 40px;
-  min-height: 80%;
-  width: 80%;
-  padding: 4rem;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
 .navbar {
   position: relative;
   height: 75px;
   width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,7 +86,78 @@ body {
   color: var(--citcs);
 }
 
+/* TABLE */
+
+table {
+  position: absolute;
+  top: 9rem;
+  border-collapse: collapse;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: white;
+  text-align: left;
+  width: 80%;
+  overflow: auto;
+}
+
+table thead {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+table thead th {
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+table tbody td {
+  padding: 1rem 2rem;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f1f3f4;
+}
+
 @media screen and (max-width: 768px) {
+  /* --- table --- */
+
+  table thead {
+    display: none;
+  }
+
+  table tr,
+  table td {
+    display: block;
+  }
+
+  table tr:not(:last-child) {
+    border-bottom: 2px solid black;
+  }
+
+  table td {
+    padding-left: 54% !important;
+    border-bottom: 1px solid #c4c4c4;
+    position: relative;
+  }
+
+  table td::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 5px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    content: attr(data-col-title);
+    font-weight: bold;
+    border-right: 1px solid #c4c4c4;
+  }
+
+  /* --- table --- */
+
   .navbar {
     flex-direction: column;
     padding-left: 0;
@@ -132,6 +205,53 @@ body {
 }
 
 @media screen and (max-width: 414px) and (min-width: 375px) {
+  /* --- table --- */
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: transparent;
+  }
+
+  table td:nth-child(even) {
+    background-color: #f1f3f4;
+  }
+
+  table tr,
+  table td {
+    display: block;
+  }
+
+  table tr:not(:last-child) {
+    border-bottom: 2px solid black;
+  }
+
+  table td {
+    padding-left: 54% !important;
+    border-bottom: 1px solid #c4c4c4;
+    position: relative;
+    overflow-wrap: break-word;
+  }
+
+  table td::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 5px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 45%;
+    content: attr(data-col-title);
+    font-weight: bold;
+    border-right: 1px solid #c4c4c4;
+  }
+
+  /* --- table --- */
+
   .navbar .menu {
     right: 2rem;
   }

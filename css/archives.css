@@ -14,6 +14,14 @@ body {
   height: 100vh;
 }
 
+/* colors */
+.hamburger,
+.title,
+li,
+.brand-name {
+  color: var(--citcs) !important;
+}
+/* colors */
 .navbar {
   position: relative;
   height: 75px;

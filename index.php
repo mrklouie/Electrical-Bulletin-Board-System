@@ -59,9 +59,9 @@ session_start();
       <div class="navbar-links">
         <ul>
           <li><a href="archives.php">Archives</a></li>
-          <li><a href="#">Feedbacks</a></li>
+          <li><a href="feedback.php">Feedbacks</a></li>
           <li><a href="index.php">Manage</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="includes/logout.php">Logout</a></li>
         </ul>
       </div>
       </div>
@@ -158,6 +158,7 @@ session_start();
                           name="title"
                           class="modal-input"
                           placeholder="Title goes here..."
+                          maxlength="75"
                         />
                         <textarea
                           name="details"
