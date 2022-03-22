@@ -72,6 +72,7 @@ session_start();?>
                 placeholder="Enter username"
                 autocomplete="off"
                 id="username"
+                maxlength="8"
               />
             </div>
             <div class="form-group">

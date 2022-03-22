@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;500;700;800&display=swap");
 :root {
-  --citcs: #68221f;
+  --citcs: #800000;
 }
 
 *,
@@ -131,6 +131,7 @@ ul li {
 .icons img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 a {

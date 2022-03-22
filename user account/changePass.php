@@ -15,6 +15,7 @@ if (isset($_SESSION["sessionId"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Change Password</title>
+
     <link rel="stylesheet" href="index.css?v=<?php echo time(); ?>" />
     <script
       src="https://kit.fontawesome.com/8d98474fa5.js"
@@ -76,6 +77,12 @@ if (isset($_SESSION["sessionId"])) {
     </div>
     <div class="user-info">
       <h2 class="user">Change Password</h2>
+      <?php if (isset($_SESSION["password"])) {?>
+              <div class="alert" id="alert"><?php echo $_SESSION["password"]; ?></div>
+              <?php unset($_SESSION["password"]);
+    } else if (isset($_SESSION["error-password"])) {?>
+  <div class="alert" id="error-alert"><?php echo $_SESSION["error-password"]; ?></div>
+            <?php unset($_SESSION["error-password"]);}?>
       <div class="grid-container">
         <div class="grid">
           <form action="includes/password.php" class="password-form" method="POST">

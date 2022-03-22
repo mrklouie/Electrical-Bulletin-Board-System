@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;500;700;800&display=swap");
 :root {
-  --citcs: #cc2a49;
+  --citcs: #800000;
 }
 
 * {
@@ -216,6 +216,19 @@ body {
   border-radius: 5px;
   margin: auto;
   width: min-content;
+}
+
+#alert {
+  background-color: rgba(172, 211, 139);
+  color: white;
+}
+
+#error-alert {
+  background-color: rgba(204, 42, 73, 0.4);
+  color: white;
+}
+
+.password-alert {
 }
 
 .alert .subtext {

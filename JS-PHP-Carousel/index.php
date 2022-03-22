@@ -34,7 +34,7 @@ if (isset($_SESSION["sessionUsername"])) {
         <p class="user"><?php if (isset($_SESSION["sessionUsername"])) {
     echo $_SESSION["sessionUsername"];
 } else {
-    echo "<a href='../login.php'>Login</a>";
+    echo "Guest";
 }?></p></a>
         <ul>
 
@@ -42,10 +42,9 @@ if (isset($_SESSION["sessionUsername"])) {
     ?>
           <li><a href="../index.php">Manage</a></li>
           <?php }?>
-          <li id="openContact">Contact</li>
+          <li><a href="#">Contact</a> </li>
         </ul>
       </nav>
-
       <!-- START MODAL -->
       <div class="pop-modal" id="pop-modal">
         <div class="section-modal left-modal">
@@ -54,28 +53,17 @@ if (isset($_SESSION["sessionUsername"])) {
           <div class="subhead">
           <h2 class="pop-modal-title">SUBSCRIBE</h2>
           <p class="pop-modal-subtext">Don't miss out any upcoming news in the futue so you won't be left behind!</p>
-          <form action="subscribe.php" method="POST">
-          <input type="hidden" name="id" value="<?php
-if (isset($_SESSION["sessionId"])) {
-    echo $_SESSION["sessionId"];
-} else {
-    "";
-}?>">
-
           <input type="email" name="email" class="email" placeholder="Enter your email here">
-
           </div>
-          <button type="submit" id="submit-modal" name="subscribe">SUBMIT</button>
-          </form>
+          <button id="submit-modal">SUBMIT</button>
         </div>
         <div class="section-modal right-modal">
 
         </div>
       </div>
       <!-- END MODAL -->
-
-      <!-- Start Contact form -->
-      <div class="contact-form" id="contact-form">
+       <!-- Start Contact form -->
+       <div class="contact-form" id="contact-form">
       <div class="close-form" data-close-contact>&times;</div>
         <div class="header">
           <div class="title">Get in touch</div>
@@ -101,16 +89,13 @@ if ($row = mysqli_fetch_assoc($result)) {
       </div>
       <!-- End Contact form -->
 
-
       <div class="section left-section">
         <nav>
           <div class="user">
             <a href="../user account/index.php">
-            <p><?php if (isset($_SESSION["sessionId"])) {
-    echo $user;} else {
-    echo "<a href='../login.php'>Login</a>";
-}?></p></a>
+            <p><?php
 
+echo $user ?></p></a>
           </div>
           <ul>
             <li><a href="../index.php">
@@ -216,6 +201,8 @@ if ($rowsCount >
 }
 ?>
         <!-- END MODAL -->
+
+
       </div>
     </div>
 

@@ -28,12 +28,14 @@ if (isset($_POST["changePass"])) {
                             $hashedPassword = password_hash($cPassword, PASSWORD_DEFAULT);
                             mysqli_stmt_bind_param($stmt, "ss", $hashedPassword, $id);
                             mysqli_stmt_execute($stmt);
+                            $_SESSION["password"] = "Password Changed";
                             header("Location: ../changePass.php?Success=PasswordChanged");
                             exit;
                         }
 
                     }
                 } else {
+                    $_SESSION["error-password"] = "Choose a new password";
                     header("Location: ../changePass.php?error=Choosenewpassword");
                     exit;
                 }
