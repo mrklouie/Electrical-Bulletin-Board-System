@@ -23,7 +23,7 @@ updateComment.forEach((comment, index) =>{
     })
 })
 
-let images = document.querySelectorAll("img");
+let images = document.querySelectorAll(".carousel-img");
 let slides = document.querySelectorAll(".controls p");
 let controls = document.querySelector(".slides");
 let details = document.querySelectorAll(".details");
@@ -182,14 +182,14 @@ if(openModalBtn.length == 1 && closeModalBtn.length == 1){
     }
 }
 
-let interval = 3000;
+let interval = 5000;
 var firstCloneDetails;
 var LastCloneImages;
 var extraCloneImages1;
 
 function recalling(){
     details = document.querySelectorAll(".details");
-    images = document.querySelectorAll("img");
+    images = document.querySelectorAll(".carousel-img");
     openModalBtn = document.querySelectorAll("[data-open-modal]");
     modals = document.querySelectorAll(".my-modal");
     closeModalBtn = document.querySelectorAll("[data-close-modal]");
@@ -241,7 +241,7 @@ function mobileView(){
         slider.style.transform = `translateX(${-tempSize * counter}px)`;
      
         nextImage.addEventListener("click", ()=>{
-            images = document.querySelectorAll("img");
+            images = document.querySelectorAll(".carousel-img");
             if(counter == images.length -2){
                 console.log("hopya");
                 counter = 2;
@@ -260,7 +260,7 @@ function mobileView(){
 
 
         prevImage.addEventListener("click", ()=>{
-            images = document.querySelectorAll("img");
+            images = document.querySelectorAll(".carousel-img");
             if(counter == 1){
                 console.log("hopya")
                 counter = images.length -3;
@@ -628,7 +628,7 @@ if(window.innerWidth <= 768){
 
         //RECALLING MODALS
         details = document.querySelectorAll(".details");
-        images = document.querySelectorAll("img");
+        images = document.querySelectorAll(".carousel-img");
         openModalBtn = document.querySelectorAll("[data-open-modal]");
         modals = document.querySelectorAll(".my-modal");
         closeModalBtn = document.querySelectorAll("[data-close-modal]");
@@ -657,7 +657,7 @@ if(window.innerWidth <= 768){
             })
         })
 
-        images = document.querySelectorAll("img");
+        images = document.querySelectorAll(".carousel-img");
         details = document.querySelectorAll(".details");
 
         openModalBtn = document.querySelectorAll("[data-open-modal]");

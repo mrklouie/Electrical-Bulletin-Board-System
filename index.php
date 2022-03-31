@@ -58,9 +58,9 @@ session_start();
       </a>
       <div class="navbar-links">
         <ul>
-          <li><a href="archives.php">Archives</a></li>
+          <li><a href="archives_1.php">Archives</a></li>
           <li><a href="feedback.php">Feedbacks</a></li>
-          <li><a href="index.php">Manage</a></li>
+          <li><a href="index.php" class="manage">Manage</a></li>
           <li><a href="includes/logout.php">Logout</a></li>
         </ul>
       </div>

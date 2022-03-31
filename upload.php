@@ -43,33 +43,33 @@ if (isset($_POST["upload"])) {
 
                         // SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
 
-                        $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
-                        $rowsCount = mysqli_num_rows($result);
-                        if ($rowsCount > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
+                        // $sql = "SELECT * FROM users";
+                        // $result = mysqli_query($conn, $sql);
+                        // $rowsCount = mysqli_num_rows($result);
+                        // if ($rowsCount > 0) {
+                        //     while ($row = mysqli_fetch_assoc($result)) {
 
-                                $tempMessage = substr($details, 0, 100);
-                                $tempSubject = substr($title, 0, 50);
+                        //         $tempMessage = substr($details, 0, 100);
+                        //         $tempSubject = substr($title, 0, 50);
 
-                                $sub = "Announcement Update [" . $tempSubject . "...]";
+                        //         $sub = "Announcement Update [" . $tempSubject . "...]";
 
-                                $msg = $tempMessage . "....read more.\n\n\n\nSent from: Electrical Bulletin Board System";
+                        //         $msg = $tempMessage . "....read more.\n\n\n\nSent from: Electrical Bulletin Board System";
 
-                                $rec = $row["email"];
+                        //         $rec = $row["email"];
 
-                                if (!mail($rec, $sub, $msg)) {
-                                    $_SESSION["success"] = "Email sent";
-                                    header("Location: index.php?EmailSent");
-                                    exit;
-                                }
-                            }
-                            $_SESSION["success"] = "New Announcement Added";
-                            header("Location: index.php?success");
-                            exit;
-                        } else {
-                            echo "Nothing found omfg!";
-                        }
+                        //         if (!mail($rec, $sub, $msg)) {
+                        //             $_SESSION["success"] = "Email sent";
+                        //             header("Location: index.php?EmailSent");
+                        //             exit;
+                        //         }
+                        //     }
+                        //     $_SESSION["success"] = "New Announcement Added";
+                        //     header("Location: index.php?success");
+                        //     exit;
+                        // } else {
+                        //     echo "Nothing found omfg!";
+                        // }
                         // SEND EMAIL TO USERS AFTER SUCCESSFULLY UPLOADED
 
                         $sql = "SELECT * FROM images";

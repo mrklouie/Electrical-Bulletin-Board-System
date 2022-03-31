@@ -3,8 +3,8 @@ session_start();
 require "db.php";
 
 if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
 
     if (empty($username) || empty($password)) {
         $_SESSION["error"] = "Please fill up all required forms";

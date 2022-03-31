@@ -35,8 +35,8 @@ $rowsCount = mysqli_num_rows($result);
       </a>
       <div class="navbar-links">
         <ul>
-          <li><a href="archives.php">Archives</a></li>
-          <li><a href="#">Feedbacks</a></li>
+          <li><a href="archives_1.php">Archives</a></li>
+          <li><a href="#" class="feedbacks">Feedbacks</a></li>
           <li><a href="index.php">Manage</a></li>
           <li><a href="includes/logout.php">Logout</a></li>
         </ul>

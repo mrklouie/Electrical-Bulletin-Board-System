@@ -50,10 +50,19 @@ body {
   margin: 0 1rem;
   font-size: 1.2rem;
 }
+.navbar-links li:hover :not(.manage) {
+  border-bottom: 2px solid var(--citcs);
+}
+
+.navbar-links li .manage {
+  border-bottom: 2px solid var(--citcs);
+  font-weight: 600;
+}
 
 .navbar-links a {
   text-decoration: none;
   color: var(--citcs);
+  padding: 1rem;
 }
 
 #archive {

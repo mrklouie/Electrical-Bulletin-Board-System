@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&family=Poppins:wght@400;500;700;800&family=Raleway:wght@400;700;800&display=swap");
+:root {
+  --citcs: #800000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.menu {
+  display: none;
+  right: 2rem;
+  top: 2rem;
+  position: absolute;
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.navbar .brand-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2rem;
+  color: var(--citcs);
+}
+
+.navbar-links ul {
+  padding: 0;
+  margin-right: 2rem;
+  display: flex;
+}
+
+.archives {
+  border-bottom: 2px solid var(--citcs);
+  font-weight: 600;
+}
+.navbar-links li {
+  list-style-type: none;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+.navbar-links li:hover {
+  border-bottom: 2px solid var(--citcs);
+}
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  color: var(--citcs);
+  padding: 1rem;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.giga-container {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.carousel-container {
+  width: 400px;
+  height: 600px;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.slider .card {
+  position: relative;
+  list-style-type: none;
+  height: 100%;
+  min-width: 400px;
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+}
+
+.slider li .card {
+  min-width: 100%;
+  height: 100%;
+}
+
+.prev {
+  z-index: 1;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: none;
+  border-style: none;
+  left: 15%;
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  height: 65%;
+  object-fit: cover;
+  /* opacity: 0.2; */
+}
+
+.details-container {
+  width: 100%;
+  height: 100%;
+  height: calc(100% - 65%);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+}
+
+.item .details {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details .title {
+  text-align: center;
+  color: var(--citcs);
+}
+
+.next {
+  z-index: 1;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: none;
+  border-style: none;
+  right: 15%;
+  position: absolute;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.dropdown {
+  z-index: 1;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 50%;
+  background-color: rgba(128, 0, 0, 0.2);
+}
+
+.dropdown-btn {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: none;
+  border-style: none;
+  font-size: 1.3rem;
+  color: white;
+}
+.dropdown-btn:focus {
+  background-color: rgba(231, 228, 228, 0.3);
+}
+
+.dropdown-menu {
+  border-radius: 5px;
+  background-color: white;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+  width: 150px;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  text-align: right;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown.activee > .dropdown-btn + .dropdown-menu {
+  transform: translateY(0);
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.dropdown button i {
+  pointer-events: none;
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+
+  border-radius: 5px;
+}
+.dropdown-menu li button {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-style: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.dropdown-menu li:hover {
+  background-color: #ebe6e6;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 1024px) {
+  .menu {
+    display: block;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .navbar-links.activee {
+    display: block;
+  }
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .archives {
+    border-bottom: 0;
+  }
+  .navbar-links li {
+    margin-left: 0;
+  }
+  .navbar-links li:hover {
+    background-color: #d4d4d4;
+    border-bottom: none;
+  }
+
+  .carousel-container {
+    width: 250px;
+    height: 350px;
+  }
+
+  .slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .slider .card {
+    position: relative;
+    list-style-type: none;
+    height: 600px;
+    min-width: 100%;
+    /* background-color: white; */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-content: center;
+  }
+  .slider li .card {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .prev,
+  .next {
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .menu {
+    display: block;
+  }
+
+  .details .title {
+    font-size: 1.2rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .navbar-links.activee {
+    display: block;
+  }
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+  .archives {
+    border-bottom: 0;
+  }
+  .navbar-links li {
+    margin-left: 0;
+  }
+  .navbar-links li:hover {
+    background-color: #d4d4d4;
+    border-bottom: none;
+  }
+
+  .carousel-container {
+    width: 250px;
+    height: 350px;
+  }
+
+  .slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .slider .card {
+    position: relative;
+    list-style-type: none;
+    height: 100%;
+    min-width: 100%;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-content: center;
+  }
+  .slider li .card {
+    min-width: 100%;
+    height: 100%;
+  }
+
+  .prev,
+  .next {
+    z-index: 1;
+  }
+}

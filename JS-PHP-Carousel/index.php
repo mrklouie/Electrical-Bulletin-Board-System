@@ -34,11 +34,11 @@ if (isset($_SESSION["sessionUsername"])) {
         <p class="user"><?php if (isset($_SESSION["sessionUsername"])) {
     echo $_SESSION["sessionUsername"];
 } else {
-    echo "Guest";
+    echo "<a href='../login.php'>Login</a>";
 }?></p></a>
         <ul>
 
-          <?php if (isset($_SESSION["sessionUsername"])) {
+          <?php if (isset($_SESSION["sessionUserType"])) {
     ?>
           <li><a href="../index.php">Manage</a></li>
           <?php }?>
@@ -71,17 +71,11 @@ if (isset($_SESSION["sessionUsername"])) {
         <div class="body">
            <form action="send-contact.php" method="POST">
               <div class="form-group">
-                <?php
-
-$sql = "SELECT * FROM users WHERE username = '" . $user . "'";
-$result = mysqli_query($conn4, $sql);
-if ($row = mysqli_fetch_assoc($result)) {
-    ?>
                 <input type="hidden" name="date" value="<?php echo date("Y-m-d H:i:s"); ?>">
-                <input type="text" name="name" value="<?php echo $row["fname"] . " " . $row["lname"]; ?>">
-                <input type="email" name="email" value="<?php echo $row["email"]; ?>">
+                <input type="text" name="name" placeholder="Enter your name here">
+                <input type="email" name="email" placeholder="Enter your email here">
                 <textarea name="message" id="message" placeholder="Enter message here"></textarea>
-                <?php }?>
+
                 <button class="send" type="submit" name="send-contact">Send  <i class="fa fa-envelope"></i></button>
               </div>
            </form>
@@ -93,9 +87,11 @@ if ($row = mysqli_fetch_assoc($result)) {
         <nav>
           <div class="user">
             <a href="../user account/index.php">
-            <p><?php
-
-echo $user ?></p></a>
+            <p><?php if (isset($_SESSION["sessionUsername"])) {
+    echo $user;
+} else {
+    echo "<a href='../login.php'>Login</a>";
+}?></p></a>
           </div>
           <ul>
             <li><a href="../index.php">
@@ -129,13 +125,18 @@ if ($rowsCount >
         <div class="icons">
           <div class="icon">
             <a href="https://www.plmun.edu.ph/"
-            target="_blank"><i class="fa fa-globe" style="font-size: 40px"></i
+            target="_blank"><i class="fa fa-globe" style="font-size: 50px"></i
             ></a>
           </div>
           <div class="icon">
             <a href="https://www.facebook.com/plmunofficial/" target="_blank">
-              <i class="fa fa-facebook-square" style="font-size: 40px"></i
+              <i class="fa fa-facebook-square" style="font-size: 50px"></i
             ></a>
+          </div>
+          <div class="icon">
+            <a href="https://www.facebook.com/groups/930530860368618" target="_blank">
+              <img src="images/CITCS LOGO.png" alt="" class="plmun-logo">
+            </a>
           </div>
         </div>
       </div>
@@ -172,7 +173,7 @@ $result = mysqli_query($conn, $sql);
 $rowsCount = mysqli_num_rows($result);
 if ($rowsCount >
     0) {while ($row = mysqli_fetch_assoc($result)) {?> <img
-          src="../uploads/<?php echo $row["images"]; ?>" data-open-modal=#my-modal>
+          src="../uploads/<?php echo $row["images"]; ?>" class="carousel-img" data-open-modal=#my-modal>
           <?php
 }}
 ?>

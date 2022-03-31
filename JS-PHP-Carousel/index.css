@@ -102,14 +102,6 @@ ul li {
   font-size: 1.2rem;
 }
 
-/* ul li {
-  display: inline-block;
-  margin: 2rem;
-  cursor: pointer;
-  list-style-type: none;
-  font-size: 1.2rem;
-} */
-
 .user {
   font-size: 1.2rem;
   margin: 2rem;
@@ -121,11 +113,21 @@ ul li {
   margin-left: 4rem;
   bottom: 3rem;
   display: flex;
-  z-index: 55;
+
+  width: 270px;
+  height: 50px;
 }
 
 .icon {
+  width: 100%;
+  height: 100%;
   margin-right: 2rem;
+  /* outline: 1px solid black; */
+}
+
+.icon:not(:last-child) {
+  display: grid;
+  place-content: center;
 }
 
 .icons img {
@@ -344,6 +346,9 @@ button:hover {
 }
 
 .email {
+  width: 15rem;
+  text-align: center;
+  margin: auto;
   padding: 0.5rem 1rem;
   outline: none;
   border-style: none;
@@ -482,6 +487,14 @@ textarea {
 }
 .contact-form .body input {
   margin: 1rem;
+}
+
+.contact-form .body input:focus::placeholder {
+  color: transparent;
+}
+.contact-form .body input::placeholder {
+  transition: color 0.3s ease;
+  color: #c4c4c4;
 }
 .contact-form .body textarea {
   margin: 1rem;
