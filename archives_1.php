@@ -88,7 +88,7 @@ require "includes/db.php";
         </div>
       </div>
     </div>
-    <script src="archives_1.js"></script>
+    <script type="module" src="archives_1.js"></script>
   </body>
 </html>
 <?php } else {
